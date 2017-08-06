@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>网站的反爬虫与爬虫策略</title>
+  <meta name="description" content="因为平时会写点东西爬数据用，今天被同行问道：你是写爬虫的但是该如何反爬虫呢？这个问题真把我问住了，因为平时我自己的爬虫跑的好好的，遇到问题也是在考虑如何破解网站的机制而不是考虑他们是如何让我的爬虫失效的。所以回去好好思考了一下，如何制定网站的发爬虫策略？如何针对网站的反爬虫策略，以下是我平时的一些总结。">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://www.54gaozhe.com/coding/2016/03/02/spider-and-antispider.html">
+  <link rel="alternate" type="application/rss+xml" title="Gaozhe'blog" href="http://www.54gaozhe.com/feed.xml">
+  <!-- 百度站长平台验证标签-->
+  <meta name="baidu-site-verification" content="WbsvcIEgEn" />
+</head>
+
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Gaozhe'blog </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Gaozhe'blog </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="/index.html">首页</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+
+  <!-- 列出所有根目录下的页面链接，about.md 这些页面，但是我不希望列出所有，所以先注掉，写死首页头部导航
+  
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/sitemap.xml">Sitemap</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <!-- -->
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/coding/2016/03/02/spider-and-antispider.html">网站的反爬虫与爬虫策略</a></h1>
+  <center>  <p class="post-meta"><time datetime="2016-03-02T00:00:00+08:00" itemprop="datePublished">Mar 2, 2016</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>因为平时会写点东西爬数据用，今天被同行问道：你是写爬虫的但是该如何反爬虫呢？这个问题真把我问住了，因为平时我自己的爬虫跑的好好的，遇到
+问题也是在考虑如何破解网站的机制而不是考虑他们是如何让我的爬虫失效的。所以回去好好思考了一下，如何制定网站的发爬虫策略？如何针对网站的反爬虫策略，以下是我平时的一些总结。
+<!-- more -->
+### 手工识别，拒绝IP访问</p>
+
+<p>这个是最简单粗暴的，因为有相当多的爬虫对网站会造成非常高的负载，因此识别爬虫的来源IP是很容易的事情。最简单的办法就是用netstat检查80端口的连接：<br />
+<code>netstat -nt | grep youhostip:80 | awk '{print $5}' | awk -F":" '{print $1}'| sort | uniq -c | sort -r -n</code><br />
+这行shell可以按照80端口连接数量对来源IP进行排序，这样可以直观的判断出来网页爬虫。一般来说爬虫的并发连接非常高。  </p>
+
+<p>拒绝ip可以使用防火墙配置iptables或者在webserver中配置<br />
+直接封锁爬虫所在的C网段地址。这是因为一般爬虫都是运行在托管机房里面，可能在一个C段里面的多台服务器上面都有爬虫，而这个C段不可能是用户宽带上网，封锁C段可以很大程度上解决问题。  </p>
+
+<p><strong><em>注意：</em></strong>注意千万不要在自己网站上动态循环链接页面，弱智的爬虫自己在正常的网页中都爬不出来，而高端的爬虫有放死链的机制而且运行一个爬虫根本不消耗什么机器资源，相反，真正宝贵的是你的服务器CPU资源和服务器带宽。除此之外还会降低你再搜索引擎中的排名。  </p>
+
+<p><strong><em>应对策略：</em></strong>使用代理池广泛分布的ip并且同一网站并发量不要特别高，使用多个不同IP的小爬虫来爬取数据，由于每个小爬虫单独的爬取量都很低，所以你很难把它从每天海量的访问IP地址当中把它准确的挖出来。</p>
+
+<h3 id="user-agent">User-Agent识别</h3>
+
+<p>我们可以通过爬虫的User-Agent信息来识别。每个爬虫在爬取网页的时候，会声明自己的User-Agent信息，因此我们就可以通过记录和分析User-Agent信息来挖掘和封锁爬虫。我们需要记录每个请求的User-Agent信息。通过统计分析访问量大的User-Agent信息来阻止相关爬虫。使用这种方式来封锁爬虫虽然简单但是非常有效，除了封锁特定的爬虫，还可以封锁常用的编程语言和HTTP类库的User-Agent信息。</p>
+
+<p><strong><em>注意：</em></strong>需要保证搜索引擎的爬虫不被过滤掉，一般搜索引擎的爬虫User-Agent都会有单独的标记，如Baiduspider,Googlespider,如果搜索引擎爬虫对网站带来了一定的影响可以对专门的爬虫进行流量限制。</p>
+
+<p><strong><em>应对策略：</em></strong>修改User-Agent信息模仿搜索引擎爬虫，但是对方可能会判断IP是否属于搜索引擎，运用IP白名单的方式屏蔽你，最好的方式是使用模拟浏览器进行操作如java的开源框架htmlunit，JS的框架PhantomJS，Selenium他们对JS都有很好的支持同时也可以解决下面说到的使用JS来防爬虫。</p>
+
+<h3 id="js">利用JS脚本反爬</h3>
+
+<p>大多数爬虫是不加载网页image,css和js脚本的，像我平时使用的htmlunit是支持css,js和SSL，但是一般爬数据的时候都不起用上述功能以免影响效率，所以网站可通过js脚本做到反爬的效果。</p>
+
+<h4 id="js-1">JS动态加密获取数据</h4>
+
+<p>页面数据不再直接获取，而是由前端异步获取，并且通过 js 的加密库生成动态的 token，同时加密库再进行混淆，一般网站登录是这么做的。</p>
+
+<p><strong><em>应对策略：</em></strong>研究JS代码找到加密原理进行破解，或者直接使用上面提到的支持JS的框架使用js引擎直接算出加密数据直接爬取。</p>
+
+<h4 id="js-2">利用js流量统计发现爬虫</h4>
+
+<p>上面的方法其实很容易应对，只是会稍微影响爬虫效率。一般我们做流量统计会向网页里面嵌入一段js，这段js会向特定的统计服务器发送请求的方式记录访问量，比如cnzz之类的。</p>
+
+<p>在理想的情况下，嵌入js的方式统计的网站流量应该高于分析服务器日志，这是因为用户浏览器会有缓存，不一定每次真实用户访问都会触发服务器的处理。但实际上并不是这样。</p>
+
+<p>由于一般爬虫不会加载并执行js代码片段，所以通过流量统计系统得到的用户IP基本是真实的用户访问，我们可以拿流量统计系统记录的IP和服务器程序日志记录的IP地址进行比较，如果服务器日志里面某个IP发起了大量的请求，在流量统计系统里面却根本找不到，或者即使找得到，可访问量却只有寥寥几个，那么无疑就是一个网络爬虫。</p>
+
+<p><strong><em>应对策略：</em></strong>同上。</p>
+
+<h3 id="section">实时防护策略</h3>
+
+<p>我们可以用memcached或redis啥的来做访问计数器，记录每个IP的访问频度，在单位时间之内，如果访问频率超过一个阀值，我们就认为这个IP很可能有问题，那么我们就可以返回一个验证码页面，要求用户填写验证码。如果是爬虫的话，简单验证码可以处理，遇到复杂的验证码爬虫一般处理不了。</p>
+
+<p>如果某个IP地址单位时间内访问频率超过阀值，再增加一个计数器，跟踪他会不会立刻填写验证码，如果他不填写验证码，在短时间内还是高频率访问，就把这个IP地址段加入黑名单，除非用户填写验证码激活，否则所有请求全部拒绝。这样我们就可以通过在程序里面维护黑名单的方式来动态的跟踪爬虫的情况，甚至我们可以自己写个后台来手工管理黑名单列表，了解网站爬虫的情况。</p>
+
+<p>网站流量统计系统记录的IP地址是真实用户访问IP，所以我们在网站流量统计系统里面也去操作memcached，但是这次不是增加计数值，而是减少计数值。在网站流量统计系统里面每接收到一个IP请求，就相应的cache.decrement(key)。所以对于真实用户的IP来说，它的计数值总是加1然后就减1，不可能很高。这样我们就可以大大降低判断爬虫的阀值，可以更加快速准确的识别和拒绝掉爬虫。</p>
+
+<p>爬虫爬取网页的频率都是比较固定的，不像人去访问网页，中间的间隔时间比较无规则，所以我们可以给每个IP地址建立一个时间窗口，记录IP地址最近12次访问时间，每记录一次就滑动一次窗口，比较最近访问时间和当前时间，如果间隔时间很长判断不是爬虫，清除时间窗口，如果间隔不长，就回溯计算指定时间段的访问频率，如果访问频率超过阀值，就转向验证码页面让用户填写验证码。</p>
+
+<p><strong><em>应对策略：</em></strong>简单的数字，文字，计算题，选择题验证码现在的收费自动验证平台都能处理，比如我正在用的悠悠云就可以识别简单文字验证码。高端点的识别图像验证码暂时没处理过不过也是有图片识别解决方案的，谷歌的一套图像识别酷据说可以识别百分之九十的验证码包括谷歌自己的，这个本人没做过验证。还有一个就是滑动图片验证码现在比较难解决。</p>
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/notes/2016/01/31/mysql-master-slave.html">
+        &laquo; Mysql中的主从配置
+    </a>
+  
+  
+    <a class="postNext" href="/coding/2016/03/05/rabit-carry-carrot.html">
+        小兔子搬萝卜问题解决方案 &raquo;
+    </a>
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Gaozhe'blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          
+          <li>
+            <li>Weibo：<a href="http://weibo.com/54gaozhe">敲代码的高双喜</a></li>
+
+          </li>
+          
+          
+          <li>
+            <li>Weixin：<a href="http://mp.weixin.qq.com/s?__biz=MzI5MTUzNzQxNQ==&mid=2247483871&idx=1&sn=51d064eb2cca7486c58546c917477fef&chksm=ec0e56b7db79dfa12ce501f74cfa65b7afa37cd22e1ece4ad217fd0d8b01957a8e028b40e9e6#rd">敲代码的高双喜</a></li>
+
+          </li>
+          
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Gaozhe'blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

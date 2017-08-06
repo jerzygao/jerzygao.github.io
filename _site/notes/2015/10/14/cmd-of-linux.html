@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Linux常用命令</title>
+  <meta name="description" content="      1. 系统相关        2. 压缩相关        3. mysql相关        4. vim相关        5. 重命名移动文件文件夹命令        6. 文件文本处理相关        7. crontab定时任务  ">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://www.54gaozhe.com/notes/2015/10/14/cmd-of-linux.html">
+  <link rel="alternate" type="application/rss+xml" title="Gaozhe'blog" href="http://www.54gaozhe.com/feed.xml">
+  <!-- 百度站长平台验证标签-->
+  <meta name="baidu-site-verification" content="WbsvcIEgEn" />
+</head>
+
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Gaozhe'blog </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Gaozhe'blog </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="/index.html">首页</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+
+  <!-- 列出所有根目录下的页面链接，about.md 这些页面，但是我不希望列出所有，所以先注掉，写死首页头部导航
+  
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/sitemap.xml">Sitemap</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <!-- -->
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/2015/10/14/cmd-of-linux.html">Linux常用命令</a></h1>
+  <center>  <p class="post-meta"><time datetime="2015-10-14T00:00:00+08:00" itemprop="datePublished">Oct 14, 2015</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <ul>
+  <li>
+    <p><a href="#system">1. 系统相关</a></p>
+  </li>
+  <li>
+    <p><a href="#tar">2. 压缩相关</a></p>
+  </li>
+  <li>
+    <p><a href="#mysql">3. mysql相关</a></p>
+  </li>
+  <li>
+    <p><a href="#vim">4. vim相关</a></p>
+  </li>
+  <li>
+    <p><a href="#mv">5. 重命名移动文件文件夹命令</a></p>
+  </li>
+  <li>
+    <p><a href="#file">6. 文件文本处理相关</a></p>
+  </li>
+  <li>
+    <p><a href="#crontab">7. crontab定时任务</a></p>
+  </li>
+</ul>
+
+<!-- more -->
+<p># 系统相关  {#system}</p>
+
+<h2 id="section">查看系统磁盘使用情况，各个文件大小</h2>
+<p><strong>df -Th</strong>
+&gt;-h  参数 -h 表示使用「Human-readable」的输出 -T显示磁盘类型</p>
+
+<p><strong>du -h –max-depth=1 /data/</strong>*
+&gt;max-depth=n n为数字 表示递归遍历n层目录，/data/*为遍历的文件夹</p>
+
+<h2 id="cpu">查看系统内存，CPU</h2>
+
+<p>CPU<br />
+lscpu<br />
+grep “model name” /proc/cpuinfo | cut -f2 -d:<br />
+CPU位数<br />
+getconf LONG_BIT<br />
+内存 单位M<br />
+dmidecode -t memory | grep Size<br />
+使用 free 命令可以查看当前系统的内存信息，要查看内存的总数和空闲空间时，大家可使用 free 命令：<br />
+free –m<br />
+lspci<br />
+列出所有连接到 PCI 总线的详细信息，例如：显卡、网卡、USB 接口及 SATA 控制器等设备<br />
+lshw<br />
+是一个通用工具，该工具可以执行多个硬件如：CPU、内存、USB 控制器及磁盘等详细信息。lshw 在执行之后会自动提取不同“/proc”文件中的信息。</p>
+
+<h2 id="section-1">修改密码</h2>
+
+<p>passwd root 修改root密码</p>
+
+<h2 id="section-2">重启与关机</h2>
+
+<p>重启命令：</p>
+
+<p>1、reboot</p>
+
+<p>2、shutdown -r now 立刻重启(root用户使用)</p>
+
+<p>3、shutdown -r 10 过10分钟自动重启(root用户使用)</p>
+
+<p>4、shutdown -r 20:35 在时间为20:35时候重启(root用户使用)</p>
+
+<p>关机命令：</p>
+
+<p>1、halt   立刻关机</p>
+
+<p>2、poweroff  立刻关机</p>
+
+<p>3、shutdown -h now 立刻关机(root用户使用)</p>
+
+<p>4、shutdown -h 10 10分钟后自动关机</p>
+
+<h1 id="tar">压缩相关</h1>
+
+<h2 id="section-3">常有压缩解压命令列表</h2>
+
+<p>.tar<br />
+解包：tar xvf FileName.tar<br />
+打包：tar cvf FileName.tar DirName<br />
+（注：tar是打包，不是压缩！）<br />
+———————————————<br />
+.gz<br />
+解压1：gunzip FileName.gz<br />
+解压2：gzip -d FileName.gz<br />
+压缩：gzip FileName  </p>
+
+<p>.tar.gz 和 .tgz<br />
+解压：tar zxvf FileName.tar.gz<br />
+压缩：tar zcvf FileName.tar.gz DirName<br />
+———————————————<br />
+.bz2<br />
+解压1：bzip2 -d FileName.bz2<br />
+解压2：bunzip2 FileName.bz2<br />
+压缩： bzip2 -z FileName  </p>
+
+<p>.tar.bz2<br />
+解压：tar jxvf FileName.tar.bz2<br />
+压缩：tar jcvf FileName.tar.bz2 DirName<br />
+———————————————<br />
+.bz<br />
+解压1：bzip2 -d FileName.bz<br />
+解压2：bunzip2 FileName.bz<br />
+压缩：未知  </p>
+
+<p>.tar.bz<br />
+解压：tar jxvf FileName.tar.bz<br />
+压缩：未知<br />
+———————————————<br />
+.Z<br />
+解压：uncompress FileName.Z<br />
+压缩：compress FileName<br />
+.tar.Z  </p>
+
+<p>解压：tar Zxvf FileName.tar.Z<br />
+压缩：tar Zcvf FileName.tar.Z DirName<br />
+———————————————<br />
+.zip<br />
+解压：unzip FileName.zip<br />
+压缩：zip FileName.zip DirName<br />
+———————————————<br />
+.rar<br />
+解压：rar x FileName.rar<br />
+压缩：rar a FileName.rar DirName<br />
+———————————————<br />
+.lha<br />
+解压：lha -e FileName.lha<br />
+压缩：lha -a FileName.lha FileName<br />
+———————————————<br />
+.rpm<br />
+解包：rpm2cpio FileName.rpm | cpio -div<br />
+———————————————<br />
+.deb<br />
+解包：ar p FileName.deb data.tar.gz | tar zxf -  </p>
+
+<h2 id="tar">tar命令</h2>
+
+<p>-c: 建立压缩档案<br />
+-x：解压<br />
+-t：查看内容<br />
+-r：向压缩归档文件末尾追加文件<br />
+-u：更新原压缩包中的文件  </p>
+
+<p>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。</p>
+
+<p>-z：有gzip属性的<br />
+-j：有bz2属性的<br />
+-Z：有compress属性的<br />
+-v：显示所有过程<br />
+-O：将文件解开到标准输出  </p>
+
+<p>下面的参数-f是必须的</p>
+
+<p>-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。</p>
+
+<p><strong>tar -cf all.tar *.jpg</strong></p>
+
+<p>这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。</p>
+
+<p><strong>tar -rf all.tar *.gif</strong></p>
+
+<p>这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。</p>
+
+<p><strong>tar -uf all.tar logo.gif</strong></p>
+
+<p>这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。</p>
+
+<p><strong>tar -tf all.tar</strong></p>
+
+<p>这条命令是列出all.tar包中所有文件，-t是列出文件的意思</p>
+
+<p><strong>tar -xf all.tar</strong></p>
+
+<p>这条命令是解出all.tar包中所有文件，-t是解开的意思</p>
+
+<h3 id="tar-1">tar压缩</h3>
+
+<p><strong>tar -cvf jpg.tar *.jpg</strong> //将目录里所有jpg文件打包成tar.jpg</p>
+
+<p><strong>tar -czf jpg.tar.gz *.jpg</strong>   //将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gz</p>
+
+<p><strong>tar -cjf jpg.tar.bz2 *.jpg</strong> //将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2</p>
+
+<p><strong>tar -cZf jpg.tar.Z *.jpg</strong>   //将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Z</p>
+
+<p><strong>rar a jpg.rar *.jpg</strong> //rar格式的压缩，需要先下载rar for linux</p>
+
+<p><strong>zip jpg.zip *.jpg</strong> //zip格式的压缩，需要先下载zip for linux</p>
+
+<h3 id="tar-2">tar解压</h3>
+
+<p>tar -xvf file.tar //解压 tar包</p>
+
+<p>tar -xzvf file.tar.gz //解压tar.gz</p>
+
+<p>tar -xjvf file.tar.bz2   //解压 tar.bz2</p>
+
+<p>tar -xZvf file.tar.Z   //解压tar.Z</p>
+
+<p>unrar e file.rar //解压rar</p>
+
+<p>unzip file.zip //解压zip</p>
+
+<h2 id="section-4">总结</h2>
+
+<p>1、*.tar 用 tar -xvf 解压</p>
+
+<p>2、*.gz 用 gzip -d或者gunzip 解压</p>
+
+<p>3、*.tar.gz和*.tgz 用 tar -xzf 解压</p>
+
+<p>4、*.bz2 用 bzip2 -d或者用bunzip2 解压</p>
+
+<p>5、*.tar.bz2用tar -xjf 解压</p>
+
+<p>6、*.Z 用 uncompress 解压</p>
+
+<p>7、*.tar.Z 用tar -xZf 解压</p>
+
+<p>8、*.rar 用 unrar e解压</p>
+
+<p>9、*.zip 用 unzip 解压</p>
+
+<h1 id="mysql">mysql相关</h1>
+
+<h2 id="section-5">启动方式</h2>
+
+<p>1、使用 service 启动：service mysqld start</p>
+
+<p>2、使用 mysqld 脚本启动：/etc/inint.d/mysqld start</p>
+
+<p>3、使用 safe_mysqld 启动：safe_mysqld&amp;</p>
+
+<h2 id="section-6">停止</h2>
+
+<p>1、使用 service 启动：service mysqld stop</p>
+
+<p>2、使用 mysqld 脚本启动：/etc/inint.d/mysqld stop</p>
+
+<p>3、mysqladmin shutdown</p>
+
+<h2 id="section-7">重启</h2>
+
+<p>1、使用 service 启动：service mysqld restart</p>
+
+<p>2、使用 mysqld 脚本启动：/etc/inint.d/mysqld restart</p>
+
+<h1 id="vim">vim相关</h1>
+
+<h2 id="section-8">保存命令</h2>
+
+<p>按ESC键 跳到命令模式，然后：<br />
+:w   保存文件但不退出vi<br />
+:w file 将修改另外保存到file中，不退出vi<br />
+:w!   强制保存，不推出vi<br />
+:wq  保存文件并退出vi<br />
+:wq! 强制保存文件，并退出vi<br />
+q:  不保存文件，退出vi<br />
+:q! 不保存文件，强制退出vi<br />
+:e! 放弃所有修改，从上次保存文件开始再编辑  </p>
+
+<h2 id="section-9">格式化命令</h2>
+
+<p>gg 至文件头，G至文件尾<br />
+命令模式直接输入gg=G格式化文件<br />
+全选文本按顺序如下命令<br />
+gg<br />
+v<br />
+G  </p>
+
+<p>yy复制游标所在行整行。或大写一个Y。<br />
+2yy或y2y复制两行。<br />
+y^复制至行首，或y0。不含游标所在处字元。<br />
+y$复制至行尾。含游标所在处字元。<br />
+yw复制一个word。<br />
+y2w复制两个字（单词）。<br />
+yG复制至档尾。<br />
+y1G复制至档首。<br />
+p小写p代表贴至游标后（下）。<br />
+P大写P代表贴至游标前（上）。<br />
+如果只是想使用系统粘贴板的话直接在输入模式按Shift+Inset就可以了  </p>
+
+<p>x      删除当前光标下的字符<br />
+dw   删除光标之后的单词剩余部分。<br />
+d$   删除光标之后的该行剩余部分。<br />
+dd   删除当前行。<br />
+c     功能和d相同，区别在于完成删除操作后进入INSERT MODE<br />
+cc   也是删除当前行，然后进入INSERT MODE  </p>
+
+<h1 id="mv">重命名 移动文件文件夹命令</h1>
+
+<p>inux下重命名文件或文件夹的命令mv既可以重命名，又可以移动文件或文件夹.</p>
+
+<p>例子：将目录A重命名为B</p>
+
+<p>mv A B</p>
+
+<p>例子：将/a目录移动到/b下，并重命名为c</p>
+
+<p>mv /a /b/c</p>
+
+<h1 id="file">文件文本处理相关</h1>
+
+<p><strong>sed -i ‘s/gaozhe/superman/g’ test.txt</strong></p>
+
+<blockquote>
+  <p>将test.txt文件中所有的gaozhe替换为superman -i表示修改源文件</p>
+</blockquote>
+
+<p><strong>sed -n ‘5,10p’ filename</strong></p>
+
+<blockquote>
+  <p>只查看文件的第5行到第10行</p>
+</blockquote>
+
+<table>
+  <tbody>
+    <tr>
+      <td>**cat test.log</td>
+      <td>head -n 8</td>
+      <td>tail -n +3** 第3行到第8行</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>cat test.log |head -n 8|tail -n 3</strong> 第6行到第8行
+&gt;tail -n 3：显示最后3行；
+ tail -n +3：从3行开始显示，显示3行以后的；
+ head -n 3：显示前面3行；</p>
+
+<h1 id="crontab">crontab定时任务服务</h1>
+
+<p>详细说明见：
+<a href="http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html">详细说明</a></p>
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/coding/2015/10/13/guava-ratelimter.html">
+        &laquo; 使用guava RateLimter来做接口限流
+    </a>
+  
+  
+    <a class="postNext" href="/solution/2015/10/14/no-toolkit-found-error.html">
+        解决UI4Jwebkit部署在linux服务器出现No toolkit found运行时异常 &raquo;
+    </a>
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Gaozhe'blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          
+          <li>
+            <li>Weibo：<a href="http://weibo.com/54gaozhe">敲代码的高双喜</a></li>
+
+          </li>
+          
+          
+          <li>
+            <li>Weixin：<a href="http://mp.weixin.qq.com/s?__biz=MzI5MTUzNzQxNQ==&mid=2247483871&idx=1&sn=51d064eb2cca7486c58546c917477fef&chksm=ec0e56b7db79dfa12ce501f74cfa65b7afa37cd22e1ece4ad217fd0d8b01957a8e028b40e9e6#rd">敲代码的高双喜</a></li>
+
+          </li>
+          
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Gaozhe'blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

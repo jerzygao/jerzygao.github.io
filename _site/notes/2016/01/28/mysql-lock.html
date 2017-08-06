@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Mysql中的表锁和行锁</title>
+  <meta name="description" content="表级锁锁住整张表 其他事物进不来myisam innodb都支持表级锁  ">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://www.54gaozhe.com/notes/2016/01/28/mysql-lock.html">
+  <link rel="alternate" type="application/rss+xml" title="Gaozhe'blog" href="http://www.54gaozhe.com/feed.xml">
+  <!-- 百度站长平台验证标签-->
+  <meta name="baidu-site-verification" content="WbsvcIEgEn" />
+</head>
+
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Gaozhe'blog </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Gaozhe'blog </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="/index.html">首页</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+
+  <!-- 列出所有根目录下的页面链接，about.md 这些页面，但是我不希望列出所有，所以先注掉，写死首页头部导航
+  
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/sitemap.xml">Sitemap</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <!-- -->
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/2016/01/28/mysql-lock.html">Mysql中的表锁和行锁</a></h1>
+  <center>  <p class="post-meta"><time datetime="2016-01-28T00:00:00+08:00" itemprop="datePublished">Jan 28, 2016</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="section">表级锁</h2>
+
+<p>锁住整张表 其他事物进不来<br />
+myisam innodb都支持表级锁<br />
+<!-- more -->
+### 读锁  lock table xxx read</p>
+
+<p>当前会话不可写<br />
+其他会话 不可写 可读   </p>
+
+<h3 id="lock-table-xxx-read">写锁 lock table xxx read</h3>
+
+<p>当前会话可写 可读<br />
+其他会话 不可写 不可读</p>
+
+<h3 id="unlock-tables">解锁unlock tables</h3>
+
+<p>把当前会话所有锁住的表解锁，如果忘记解锁 当再次加锁时会自动释放上一次的锁</p>
+
+<h2 id="section-1">行锁</h2>
+
+<p>行锁 最小粒度锁，真正的事物锁<br />
+只有innodb支持</p>
+
+<blockquote>
+  <p>Mysql事物支持:使用 start TRANSACTION</p>
+</blockquote>
+
+<p>行锁是索引级别不是记录级别的</p>
+
+<blockquote>
+  <p>如果加锁的sql语句where条件中没有用到索引，则会导致锁住整张表<br />
+加锁sql语句中给索引加锁，但是其他会话更新操作没有使用索引字段同样无法更新<br />
+索引无论加锁会话还是更新会话都需要使用索引字段  </p>
+</blockquote>
+
+<h3 id="select-aaa-from-xxxx-where-cd--lock-in-share-mode">共享锁 select aaa from xxxx where c=d  LOCK IN SHARE MODE</h3>
+
+<p>select 出来的行数据只有当前会话可修改，直至commit或rollback之后其他会话才能修改，但是加锁过程中其他会话可读</p>
+
+<h3 id="select-aaa-from-xxxx-where-cd--for-update">排他锁 select aaa from xxxx where c=d  FOR UPDATE</h3>
+
+<p>其他会话依然不可写但是可以普通读，再次加锁会产生冲突</p>
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/notes/2016/01/27/scala-problem.html">
+        &laquo; 初学scala常见问题汇总
+    </a>
+  
+  
+    <a class="postNext" href="/notes/2016/01/29/sql-query-optimize.html">
+        Mysql中的查询优化 &raquo;
+    </a>
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Gaozhe'blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          
+          <li>
+            <li>Weibo：<a href="http://weibo.com/54gaozhe">敲代码的高双喜</a></li>
+
+          </li>
+          
+          
+          <li>
+            <li>Weixin：<a href="http://mp.weixin.qq.com/s?__biz=MzI5MTUzNzQxNQ==&mid=2247483871&idx=1&sn=51d064eb2cca7486c58546c917477fef&chksm=ec0e56b7db79dfa12ce501f74cfa65b7afa37cd22e1ece4ad217fd0d8b01957a8e028b40e9e6#rd">敲代码的高双喜</a></li>
+
+          </li>
+          
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Gaozhe'blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

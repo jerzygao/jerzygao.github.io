@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gaozhe&#39;blog</title>
+    <description>Gaozhe&#39;blog</description>
+    <link>http://www.54gaozhe.com/</link>
+    <atom:link href="http://www.54gaozhe.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 21 Jan 2017 21:42:15 +0800</pubDate>
+    <lastBuildDate>Sat, 21 Jan 2017 21:42:15 +0800</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>极简教程 | 8分钟搭建自己的海外私有VPN服务器</title>
+        <description>&lt;p&gt;本教程介绍如何使用海外VPS搭建VPN服务器。无需任何命令，不需要懂技术，完全傻瓜式操作，任何人都可以看懂。&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;海外VPS服务商很多，当然也可以选择国内云服务商的海外服务器，但是国内的价钱很贵，国内一个月的价钱在国外可以租用将近一年。所以本教程中选择的VPS服务商是 
+&lt;a href=&quot;[https://bandwagonhost.com]&quot; title=&quot;[https://bandwagonhost.com]&quot;&gt;https://bandwagonhost.com&lt;/a&gt;
+如果上述地址无法访问，可以尝试下面的镜像地址
+&lt;a href=&quot;https://bwh1.net&quot;&gt; https://bwh1.net &lt;/a&gt;
+打开上述地址后可看到一个上世纪90年代风格的网页，点击register进入注册页面注册一个账号。
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn1.jpg&quot; alt=&quot;&quot; /&gt;
+注册账号大家肯定都会
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn2.jpg&quot; alt=&quot;&quot; /&gt;
+填写完基本信息后，需要输入验证码勾选协议然后提交，验证码那里需要注意的是这个网站验证码API使用的是谷歌的，所以如果你刷不出来验证码的话，呃，你可能需要一个VPN，国内某些VPN提供商有限时免费的账号，大家可以暂时使用把验证码刷出来。
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn3.jpg&quot; alt=&quot;&quot; /&gt;
+然后使用新注册的账号登录网站，购买最便宜的VPS。&lt;br /&gt;
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn4.jpg&quot; alt=&quot;&quot; /&gt;
+购买流程大同小异，我这里购买的是一年。
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn5.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn6.jpg&quot; alt=&quot;&quot; /&gt;
+然后付款就好了，这个网站支持支付宝，一年20刀很便宜。
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn7.jpg&quot; alt=&quot;&quot; /&gt;
+支付完成后，去服务器管理页面，进入服务器控制台。
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn8.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn9.jpg&quot; alt=&quot;&quot; /&gt;
+点击控制台最下方的Shadowsocks Server，安装ss服务器
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn10.jpg&quot; alt=&quot;&quot; /&gt;
+安装完ss服务器之后就可以在控制台看到VPN的相关信息了。然后配置自己电脑上的小飞机就可以科学上网了。
+&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/image/vpn11.jpg&quot; alt=&quot;&quot; /&gt;
+不会配置小飞机的也没关系，在上面那个页面下方就有小飞机的使用说明。&lt;/p&gt;
+
+&lt;p&gt;以上就是简单的配置一下就可以搭建自己的VPN实现科学上网的方法。大家可以看到我们全程都没有登录我们购买的VPS，也没有任何linux命令，不需要任何服务器配置。这个网站貌似就是为搭VPN而生的，这也是我为什么选择这个VPS服务商写这个教程的原因，因为选择这个VPS服务商，不懂技术的人也可以一步步配置出自己的VPN。&lt;/p&gt;
+
+&lt;p&gt;好了，教程方面我就写完了，接下来就是吐槽时间了。&lt;/p&gt;
+
+&lt;p&gt;在国内想上网都得费死劲这个事我就不吐槽了，谁叫咱生活在长城内呢！但是！某些VPN服务商也太烂了，去年年初我刚把我在海外的服务器停了，改用国内的VPN服务商的服务，我买了两年的VPN服务，按理应该在明年的春天我的VPN服务才到期，结果今天我发现不但VPN服务用不了了，连服务商的官网都踏马没了。&lt;/p&gt;
+
+&lt;p&gt;国内这些厂商果然还是不靠谱啊，我还是回归到老方法自己搭VPN用啊！&lt;/p&gt;
+
+&lt;p&gt;最后，还是放上1987年9月20日20点55分中国用互联网向世界发出的第一封电子邮件的内容：&lt;/p&gt;
+
+&lt;p&gt;Across the Great Wall we can reach every corner in the world.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/weixin/qrcode.jpg&quot; alt=&quot;&quot; /&gt;  &lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 10 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://www.54gaozhe.com/solution/2017/01/10/get-own-vpn.html</link>
+        <guid isPermaLink="true">http://www.54gaozhe.com/solution/2017/01/10/get-own-vpn.html</guid>
+        
+        <category>vpn</category>
+        
+        
+        <category>solution</category>
+        
+      </item>
+    
+      <item>
+        <title>人并不存在真正的死亡 | 生物中心主义-宇宙新理论的奠基之作</title>
+        <description>&lt;p&gt;最近利用旅途中的一些碎片时间读完了一本比较有趣的书&lt;/p&gt;
+
+&lt;p&gt;《生物中心主义》&lt;/p&gt;
+
+&lt;p&gt;封面上的描述是“宇宙新理论的奠基之作”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/swzxzy/swzxzyfengmian.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在这本书里讨论了量子物理中最著名的双缝实验，探讨了宇宙起源和时间空间的本质。但是这本书的作者不是物理学家，而是一名著名的生物学家 罗伯特 ·兰札，他是高级细胞技术公司的首席科学主管和维克深林大学医学院的兼职教授，发表过很多著作比如《干细胞手册》《干细胞生物学概要》被认为是干细胞研究的权威参考书。
+生物中心主义相信：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;外在的“客观”世界是依赖于我们的意识而存在，并非是外在的世界决定了(进化出？)我们的意识，而是我们的意识选择了并决定了外在世界。没有生命的意识，外在世界就不会真正存在，而只处在一种不确定的概率状态中。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;作者认为如果不考虑生命和意识，我们当前关于物质世界的理论是无效的。这个理论看起来有很强的“民科”味道，因为随着人类探测技术的进步人们也越来越相信宇宙是固然存在的，人类只是漫漫宇宙中很小的一部分，我们只是很幸运地球的物质条件能演化出生命。从小经典物理学告诉我们物质世界是按照其固有的规律运动不会随着人的意志而改变其运动方式。&lt;/p&gt;
+
+&lt;p&gt;但是如果我们稍微留意过一点现代物理学的话我们就会发现兰札的观点中的意识正是双缝实验中的观察者。
+什么是双缝实验？&lt;/p&gt;
+
+&lt;p&gt;我们有一种设备可以将电子一粒一粒的打出，在这个设备前放一块挡板，挡板上开两条距离很近的狭缝，挡板后面再放一个用来显示电子位置的显示屏。显示屏上的结果显示电子数目应该是以正对狭缝的位置向两边成正态分布的，说白了就是正对狭缝的显示屏位置电子最多，往两边逐渐减少，因为概率论说明电子穿过狭缝打到正前方的概率要大于其他位置。担实际上结果却和预期的不一样，显示屏幕上并没有呈现出符合正态分布的图案而是出现了类似于波的干涉图案。当我们使用特殊装置想观察电子从哪个狭缝打出的时候，干涉图案又消失了呈现出了符合正态分布的图案。就是说当没有观察者在场的时候电子呈现出波的性质，而当有观察者在场的时候电子呈现出的是粒子的特性。
+但是波的干涉条件是两个波相遇导致波峰和波峰的位置加强，波谷和波谷的位置减弱，双缝实验中电子是一粒一粒射出的，那么它和谁发生了干涉呢？答案是它与它自己发生了干涉。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/swzxzy/%E5%8F%8C%E7%BC%9D%E5%AE%9E%E9%AA%8C.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;但是电子怎么与自己发生干涉呢？说电子是波的话要发生干涉只能电子同时通过两个狭缝，这与我们认识的世界规则是矛盾的，即同一个物体在某一时刻只能存在于空间中一个点上。人们为了解决这一矛盾就引入了一个新概念：概率波。
+一个电子不可能在同一刻即在这里又在那里，但是它可以在某一个时刻有一定概率在这里又有一定概率在那里。而这一概率的分布符合波的一些特点，使得电子的运动在没有观察者的情况下呈现了波一般的性质。我们将粒子这种随时间和空间变化的概率的分布称为概率波。
+于是粒子在未被观察下的行为就可以使用概率波进行这样的解释：一粒电子被发射出，通过双缝直到被打到屏幕被观察到的过程中，其处于概率波动的不确定状态。它各有一定概率通过双缝，并在通过双缝后其在时空上的分布概率符合波动方程。那么双缝使得电子产生了多个概率波，这些概率波发生干涉，导致了最后屏幕上的干涉条纹。
+而当观察者出现时，在粒子“发现”自己被观察的一瞬间波函数瞬间坍塌，粒子失去了波的性质呈现出粒子的行为。&lt;/p&gt;
+
+&lt;p&gt;生物中心主义由此得出结论认为：在生命和意识之外没有独立的物质宇宙。未被感觉到的东西就是不真实的。一个外在的沉默无声的物质宇宙存在的时间根本就没有过，生命也不是在这个时间里稍晚的时期突然随机迸发出来的。作为感知的工具，空间和时间只是以思维构建的方式存在的。受观察者参与影响的实验其结果很容易用意识和物质宇宙的相互关联性来解释。自然和思维都不是真实的，两者是相互关联的。
+生物中心主义还总结出了7个原理：
+1. 我们感觉真实的东西是一个与我们意识有关的过程。如果存在一个“外在”实体，那么它必然存在于空间中。但这是没有意义的，因为时间和空间并不是绝对的实体，而是人和动物思维的工具。  &lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;我们外在和内在的感觉是相互纠缠的。  &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;亚原子粒子–实际上所有的粒子和对象的表现与观察者在场有着相互纠缠的作用关系。若无一个有意识的观察者在场，它们是以概率波动的不确定状态存在的。  &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;没有意识，“物质”就处在不确定的概率状态中。任何可能先于意识的宇宙，都只存在于一种概率波的状态中。  &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;唯有生命中心主义才能解释宇宙的真正结构。宇宙对生命做精微的调节，使生命在创造宇宙时产生完美的感觉。  &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在动物意识感知之外并没有真实的时间存在。时间是我们在宇宙中感觉变化的过程。  &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;空间与时间一样并不是物体或事物。空间是我们动物的另一种理解形式，并不是独立存在的。我们像乌龟的壳那样承载着时间和空间。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这本书有意思的地方在于作者在现有物理知识背景下提出了一个新的视野来解释这个世界。宇宙是由意识产生的，没有意识就没有宇宙，时间和空间也只是意识理解世界的一种工具，其本身就是不存在的。在这样的理论体系下作者是相信多远宇宙的存在的，因为意识是多元的。由此也引申出了另一个结论：我们所认知的死亡并不是真正的死亡。就像那个古老的问题中问的那样：我是谁？
+如果我只是我的身体，那么我必然会死去。如果我是自己的意识，那么我就不会死去，因为意识可以通过很多种方式表达，而他最终是不受限制的。像美剧《黑镜》中描述的那样将意识上传于计算机中保存得以永生。如果我们想弄清楚“我”是什么，现在科学给出的解释是，人体内有一个生机勃勃的神经电路喷泉，在以大约100瓦的能量运转。有人认为死亡只是体内这种维持意识的能量“离开”了而已，跟我们所说的灵魂很像，但是能量是永远是不会消失的这是大家都认可的公理，所以说人永远没有真正的死亡。&lt;/p&gt;
+
+&lt;p&gt;总的来说生物中心主义是根据量子力学中的一部分反直觉的结论发展开来的一套观点，但是这套理论并不是科学的解释也谈不上是哲学的观点。但是书中的观点却有着撼动人心的新意，在我读的无数科普文章和科幻小说中没有看到过任何与之相似的观点。书中的理论又发人深思，貌似整个世界的答案就在那里，离我们很近，但又隔着重重迷雾等我们去发掘。另外书中的观点还给我们了一些安慰，那些离我们远去了的亲人啊其实并没有真正的离开，他们只是超脱于时间之外即是活着也是死去，只是在我们所在的现实中只能面对死去这一种结果而已。&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;img src=&quot;http://ojtm3l2wh.bkt.clouddn.com/weixin/qrcode.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 23 Dec 2016 00:00:00 +0800</pubDate>
+        <link>http://www.54gaozhe.com/thoughts/2016/12/23/read-biocentrism.html</link>
+        <guid isPermaLink="true">http://www.54gaozhe.com/thoughts/2016/12/23/read-biocentrism.html</guid>
+        
+        <category>book</category>
+        
+        
+        <category>thoughts</category>
+        
+      </item>
+    
+      <item>
+        <title>小兔子搬萝卜问题解决方案</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;有一只兔子喜欢吃萝卜，于是他从离家到50m的萝卜地，搬运100跟萝卜，但他很贪吃，每隔1m吃一只(返程也吃),
+但每次只能云50只，问，他运到家最多还剩几只萝卜？&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+&lt;p&gt;推广开来问题如下图所示:小白兔从距离家(HOME)distance= &lt;strong&gt;&lt;em&gt;L&lt;/em&gt;&lt;/strong&gt; 米处的萝卜地(FARM)搬运 &lt;strong&gt;&lt;em&gt;M&lt;/em&gt;&lt;/strong&gt; 个萝卜回家,他每次最多搬运50个萝卜.小白兔首先将M个萝卜分多次
+搬运到距离家最近的X处并保证在X处的萝卜数量 &lt;strong&gt;&lt;em&gt;M_X&amp;lt;=50&lt;/em&gt;&lt;/strong&gt; 然后在X处将萝卜一次性搬回家.所以X距离FARM越远小白兔带回家的萝卜越多,但需要满足 &lt;strong&gt;&lt;em&gt;X&amp;lt;=24&lt;/em&gt;&lt;/strong&gt;
+不然小白兔回去的路上就没有萝卜吃了,或者一来一回在路上把萝卜全消耗光了.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+FARM_________X_________HOME
+   |------distance-----|
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;则小兔子从FARM走到X处需要走 (M/50)次，由于除最后一次不需要折返之外其他几次都需要折返，所以小兔子往返总共需要走次数 &lt;strong&gt;&lt;em&gt;T=(M/50)&lt;/em&gt;2-1&lt;/strong&gt;* &lt;br /&gt;
+此时X点处萝卜总数为 &lt;strong&gt;&lt;em&gt;M_X=M-T&lt;/em&gt;X&lt;/strong&gt;* 个&lt;/p&gt;
+
+&lt;p&gt;若M_X&amp;lt;=50小兔子把M_X个萝卜由X点运到HOME&lt;br /&gt;
+若M_X&amp;gt;50小兔子还需要重复上面的过程,此时相当于FARM在X处&lt;/p&gt;
+
+&lt;p&gt;代码实现如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;
+public class RabitCarryCarrot {
+	/**
+	 * 小白兔在距离家distance米处收获了carrotAmount个萝卜并准备运回家，但是小白兔很贪吃，每走一米就要吃一个萝卜（返程也要吃），问他能拿回家多少个萝卜？
+	 * */
+
+	private static int rabitCarryCarrot(int carrotAmount,int distance){
+		int times = (int) (Math.ceil(2*(double)carrotAmount/50)-1);
+		int distance_x=(int) Math.ceil(((double)carrotAmount-50)/times);
+    	if(distance_x&amp;gt;=25){
+    		distance_x=24;
+    	}
+    	System.out.println(&quot;最大折返距离：&quot;+distance_x);
+    	int amountAtDistance_x =carrotAmount-times*distance_x;
+    	System.out.println(&quot;最大折返距离处的萝卜输量：&quot;+amountAtDistance_x);
+    	if(amountAtDistance_x&amp;lt;=50){
+    		int result = carrotAmount-distance-(times-1)*distance_x;
+    		if(result&amp;gt;0){
+    			System.out.println(&quot;最后拿到家的萝卜数量：&quot;+result);
+    			return result;
+    		}else{
+    			System.out.println(&quot;小白兔被兔妈妈打死了,因为它把萝卜全TM吃了&quot;);
+    			return 0;
+    		}
+    	}else{
+    		return rabitCarryCarrot(amountAtDistance_x,distance-distance_x);
+    	}
+	}
+
+
+    public static void main(String[] args) {
+    	Scanner sc=new Scanner(System.in);
+    	System.out.println(&quot;萝卜数目&quot;);
+    	int M=sc.nextInt();
+    	System.out.println(&quot;距离&quot;);
+    	int L=sc.nextInt();
+    	System.out.println(rabitCarryCarrot(M,L));
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一些运行结果:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+萝卜数目
+100
+距离
+50
+最大折返距离：17
+最大折返距离处的萝卜输量：49
+最后拿到家的萝卜数量：16
+16
+
+萝卜数目
+200
+距离
+50
+最大折返距离：22
+最大折返距离处的萝卜输量：46
+最后拿到家的萝卜数量：18
+18
+
+萝卜数目
+10000
+距离
+50
+最大折返距离：24
+最大折返距离处的萝卜输量：424
+最大折返距离：24
+最大折返距离处的萝卜输量：40
+最后拿到家的萝卜数量：38
+38
+
+萝卜数目
+100
+距离
+100
+最大折返距离：17
+最大折返距离处的萝卜输量：49
+小白兔被兔妈妈打死了,因为它把萝卜全TM吃了
+0
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 05 Mar 2016 00:00:00 +0800</pubDate>
+        <link>http://www.54gaozhe.com/coding/2016/03/05/rabit-carry-carrot.html</link>
+        <guid isPermaLink="true">http://www.54gaozhe.com/coding/2016/03/05/rabit-carry-carrot.html</guid>
+        
+        <category>算法</category>
+        
+        
+        <category>coding</category>
+        
+      </item>
+    
+      <item>
+        <title>网站的反爬虫与爬虫策略</title>
+        <description>&lt;p&gt;因为平时会写点东西爬数据用，今天被同行问道：你是写爬虫的但是该如何反爬虫呢？这个问题真把我问住了，因为平时我自己的爬虫跑的好好的，遇到
+问题也是在考虑如何破解网站的机制而不是考虑他们是如何让我的爬虫失效的。所以回去好好思考了一下，如何制定网站的发爬虫策略？如何针对网站的反爬虫策略，以下是我平时的一些总结。
+&lt;!-- more --&gt;
+### 手工识别，拒绝IP访问&lt;/p&gt;
+
+&lt;p&gt;这个是最简单粗暴的，因为有相当多的爬虫对网站会造成非常高的负载，因此识别爬虫的来源IP是很容易的事情。最简单的办法就是用netstat检查80端口的连接：&lt;br /&gt;
+&lt;code&gt;netstat -nt | grep youhostip:80 | awk &#39;{print $5}&#39; | awk -F&quot;:&quot; &#39;{print $1}&#39;| sort | uniq -c | sort -r -n&lt;/code&gt;&lt;br /&gt;
+这行shell可以按照80端口连接数量对来源IP进行排序，这样可以直观的判断出来网页爬虫。一般来说爬虫的并发连接非常高。  &lt;/p&gt;
+
+&lt;p&gt;拒绝ip可以使用防火墙配置iptables或者在webserver中配置&lt;br /&gt;
+直接封锁爬虫所在的C网段地址。这是因为一般爬虫都是运行在托管机房里面，可能在一个C段里面的多台服务器上面都有爬虫，而这个C段不可能是用户宽带上网，封锁C段可以很大程度上解决问题。  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;注意：&lt;/em&gt;&lt;/strong&gt;注意千万不要在自己网站上动态循环链接页面，弱智的爬虫自己在正常的网页中都爬不出来，而高端的爬虫有放死链的机制而且运行一个爬虫根本不消耗什么机器资源，相反，真正宝贵的是你的服务器CPU资源和服务器带宽。除此之外还会降低你再搜索引擎中的排名。  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;应对策略：&lt;/em&gt;&lt;/strong&gt;使用代理池广泛分布的ip并且同一网站并发量不要特别高，使用多个不同IP的小爬虫来爬取数据，由于每个小爬虫单独的爬取量都很低，所以你很难把它从每天海量的访问IP地址当中把它准确的挖出来。&lt;/p&gt;
+
+&lt;h3 id=&quot;user-agent&quot;&gt;User-Agent识别&lt;/h3&gt;
+
+&lt;p&gt;我们可以通过爬虫的User-Agent信息来识别。每个爬虫在爬取网页的时候，会声明自己的User-Agent信息，因此我们就可以通过记录和分析User-Agent信息来挖掘和封锁爬虫。我们需要记录每个请求的User-Agent信息。通过统计分析访问量大的User-Agent信息来阻止相关爬虫。使用这种方式来封锁爬虫虽然简单但是非常有效，除了封锁特定的爬虫，还可以封锁常用的编程语言和HTTP类库的User-Agent信息。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;注意：&lt;/em&gt;&lt;/strong&gt;需要保证搜索引擎的爬虫不被过滤掉，一般搜索引擎的爬虫User-Agent都会有单独的标记，如Baiduspider,Googlespider,如果搜索引擎爬虫对网站带来了一定的影响可以对专门的爬虫进行流量限制。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;应对策略：&lt;/em&gt;&lt;/strong&gt;修改User-Agent信息模仿搜索引擎爬虫，但是对方可能会判断IP是否属于搜索引擎，运用IP白名单的方式屏蔽你，最好的方式是使用模拟浏览器进行操作如java的开源框架htmlunit，JS的框架PhantomJS，Selenium他们对JS都有很好的支持同时也可以解决下面说到的使用JS来防爬虫。&lt;/p&gt;
+
+&lt;h3 id=&quot;js&quot;&gt;利用JS脚本反爬&lt;/h3&gt;
+
+&lt;p&gt;大多数爬虫是不加载网页image,css和js脚本的，像我平时使用的htmlunit是支持css,js和SSL，但是一般爬数据的时候都不起用上述功能以免影响效率，所以网站可通过js脚本做到反爬的效果。&lt;/p&gt;
+
+&lt;h4 id=&quot;js-1&quot;&gt;JS动态加密获取数据&lt;/h4&gt;
+
+&lt;p&gt;页面数据不再直接获取，而是由前端异步获取，并且通过 js 的加密库生成动态的 token，同时加密库再进行混淆，一般网站登录是这么做的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;应对策略：&lt;/em&gt;&lt;/strong&gt;研究JS代码找到加密原理进行破解，或者直接使用上面提到的支持JS的框架使用js引擎直接算出加密数据直接爬取。&lt;/p&gt;
+
+&lt;h4 id=&quot;js-2&quot;&gt;利用js流量统计发现爬虫&lt;/h4&gt;
+
+&lt;p&gt;上面的方法其实很容易应对，只是会稍微影响爬虫效率。一般我们做流量统计会向网页里面嵌入一段js，这段js会向特定的统计服务器发送请求的方式记录访问量，比如cnzz之类的。&lt;/p&gt;
+
+&lt;p&gt;在理想的情况下，嵌入js的方式统计的网站流量应该高于分析服务器日志，这是因为用户浏览器会有缓存，不一定每次真实用户访问都会触发服务器的处理。但实际上并不是这样。&lt;/p&gt;
+
+&lt;p&gt;由于一般爬虫不会加载并执行js代码片段，所以通过流量统计系统得到的用户IP基本是真实的用户访问，我们可以拿流量统计系统记录的IP和服务器程序日志记录的IP地址进行比较，如果服务器日志里面某个IP发起了大量的请求，在流量统计系统里面却根本找不到，或者即使找得到，可访问量却只有寥寥几个，那么无疑就是一个网络爬虫。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;应对策略：&lt;/em&gt;&lt;/strong&gt;同上。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;实时防护策略&lt;/h3&gt;
+
+&lt;p&gt;我们可以用memcached或redis啥的来做访问计数器，记录每个IP的访问频度，在单位时间之内，如果访问频率超过一个阀值，我们就认为这个IP很可能有问题，那么我们就可以返回一个验证码页面，要求用户填写验证码。如果是爬虫的话，简单验证码可以处理，遇到复杂的验证码爬虫一般处理不了。&lt;/p&gt;
+
+&lt;p&gt;如果某个IP地址单位时间内访问频率超过阀值，再增加一个计数器，跟踪他会不会立刻填写验证码，如果他不填写验证码，在短时间内还是高频率访问，就把这个IP地址段加入黑名单，除非用户填写验证码激活，否则所有请求全部拒绝。这样我们就可以通过在程序里面维护黑名单的方式来动态的跟踪爬虫的情况，甚至我们可以自己写个后台来手工管理黑名单列表，了解网站爬虫的情况。&lt;/p&gt;
+
+&lt;p&gt;网站流量统计系统记录的IP地址是真实用户访问IP，所以我们在网站流量统计系统里面也去操作memcached，但是这次不是增加计数值，而是减少计数值。在网站流量统计系统里面每接收到一个IP请求，就相应的cache.decrement(key)。所以对于真实用户的IP来说，它的计数值总是加1然后就减1，不可能很高。这样我们就可以大大降低判断爬虫的阀值，可以更加快速准确的识别和拒绝掉爬虫。&lt;/p&gt;
+
+&lt;p&gt;爬虫爬取网页的频率都是比较固定的，不像人去访问网页，中间的间隔时间比较无规则，所以我们可以给每个IP地址建立一个时间窗口，记录IP地址最近12次访问时间，每记录一次就滑动一次窗口，比较最近访问时间和当前时间，如果间隔时间很长判断不是爬虫，清除时间窗口，如果间隔不长，就回溯计算指定时间段的访问频率，如果访问频率超过阀值，就转向验证码页面让用户填写验证码。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;应对策略：&lt;/em&gt;&lt;/strong&gt;简单的数字，文字，计算题，选择题验证码现在的收费自动验证平台都能处理，比如我正在用的悠悠云就可以识别简单文字验证码。高端点的识别图像验证码暂时没处理过不过也是有图片识别解决方案的，谷歌的一套图像识别酷据说可以识别百分之九十的验证码包括谷歌自己的，这个本人没做过验证。还有一个就是滑动图片验证码现在比较难解决。&lt;/p&gt;
+</description>
+        <pubDate>Wed, 02 Mar 2016 00:00:00 +0800</pubDate>
+        <link>http://www.54gaozhe.com/coding/2016/03/02/spider-and-antispider.html</link>
+        <guid isPermaLink="true">http://www.54gaozhe.com/coding/2016/03/02/spider-and-antispider.html</guid>
+        
+        <category>爬虫</category>
+        
+        
+        <category>coding</category>
+        
+      </item>
+    
+      <item>
+        <title>Mysql中的主从配置</title>
+        <description>&lt;h3 id=&quot;mysql&quot;&gt;Mysql日志相关&lt;/h3&gt;
+
+&lt;p&gt;Mysql有四种日志: 查询日志 错误日志 慢查询日志 二进制日志&lt;br /&gt;
+相关配置如下:&lt;br /&gt;
+&lt;!-- more --&gt;
+~~~&lt;/p&gt;
+
+&lt;p&gt;log-output=FILE  #以文件的方式记录日志
+#错误日志
+log-error=xxxxx  &lt;/p&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;查询日志  一切查询均进入&lt;/h1&gt;
+&lt;p&gt;general-log=0  #0代表关闭，1代表开启 general-log=xxxx  
+general-log-file #文件名&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;慢查询日志&lt;/h1&gt;
+&lt;p&gt;slow-query-log=1  #0代表关闭，1代表开启 log-slow-queries=xxxxx 
+long_query_time=1   #这里设置秒，譬如一秒认为是慢的 则记录&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+#### 二进制日志
+
+记录了所有的DDL(Create、Drop和Alter)和DML(insert、update、delete_的语句，但不包括查询的语句  
+语句以事件的方式保存，描述了数据的更改过程     
+往往用于灾难时数据恢复和我们的主从同步依据  
+
+默认不开，需要手动开启  
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;log-bin=“xxxx”  #文件名或路径 linux下需要保证xxx路径权限需要改成mysql的 chon -R mysql:mysql xxx
+binlog-do-db=xxx  #表示只对指定数据库生效,xxx是数据库名称&lt;/p&gt;
+
+&lt;p&gt;~~~&lt;/p&gt;
+
+&lt;p&gt;使用mysql的专有工具来查看这个日志文件  &lt;code&gt;mysqlbinlog xxxx&lt;/code&gt;  &lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;从二进制日志文件中恢复数据&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;mysqlbinlog --stop-position=xxxx  日志文件名 | mysql -u root -p&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;代表从头恢复 到某个position&lt;br /&gt;
+也可以使用–start-position=xxxx ,代表从这个点恢复到结尾&lt;br /&gt;
+也可以按日期恢复&lt;br /&gt;
+–stop-date 和 –start-date&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;主从配置&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;主从机器上都需要开启二进制日志  &lt;/li&gt;
+  &lt;li&gt;主从服务器上添加右侧配置标识身份: &lt;code&gt;server-id=xxx #随意用于标记主从数据库&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;主服务器上建议使用单独用户来使用主从服务 &lt;code&gt;create user &#39;masteruser&#39;@&#39;%&#39; IDENTIFIED by &#39;Aa_123@#&#39;;&lt;/code&gt;
+% 代表任何IP,当然你也可以设置一个IP, masteruser 就是根据你的口味设置一个用户名。设置权限: &lt;code&gt;GRANT REPLICATION SLAVE ON *.* TO &#39;masteruser&#39;@&#39;%&#39; IDENTIFIED BY  &#39;Aa_123@#&#39;;&lt;/code&gt;
+这个用户专门用于读取主服务器的二进制文件。配置从服务器时用到&lt;/li&gt;
+  &lt;li&gt;从服务器配置: &lt;code&gt;change master to master_host=&#39;192.168.1.123&#39;, master_user=&#39;masteruser&#39;,master_password=&#39;Aa_123@#&#39;;&lt;/code&gt; 192.168.1.123是主服务器IP,然后启用从服务器:
+` start slave ; `&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这样主从服务就配置好了&lt;/p&gt;
+</description>
+        <pubDate>Sun, 31 Jan 2016 00:00:00 +0800</pubDate>
+        <link>http://www.54gaozhe.com/notes/2016/01/31/mysql-master-slave.html</link>
+        <guid isPermaLink="true">http://www.54gaozhe.com/notes/2016/01/31/mysql-master-slave.html</guid>
+        
+        <category>mysql</category>
+        
+        
+        <category>notes</category>
+        
+      </item>
+    
+      <item>
+        <title>Mysql中的分区功能</title>
+        <description>&lt;p&gt;分区&lt;br /&gt;
+当数据量大的时候仅仅使用索引是不够的，这时候可以使用Mysql的一个功能：分区&lt;br /&gt;
+将数据划分为多块在多个位置存放，可以是不同的磁盘也可以是不同的机器&lt;br /&gt;
+分区后表面还是一张表但是数据散列在不同的位置&lt;br /&gt;
+读写时没有任何区别Mysql自动组织分区数据&lt;br /&gt;
+&lt;!-- more --&gt;
+分区的四种形式: range list hash key  &lt;/p&gt;
+
+&lt;p&gt;以range使用为例:&lt;br /&gt;
+新建分区:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+alter table xxx partition  by range(id)(
+partition A values less than (4),   --xxx表id为1，2，3的数据在A分区
+partition B values less than (6) data DIRECTORY =&#39;D:/data/b&#39; INDEX DIRECTORY=&#39;D:/data/b&#39; ,   --xxx表id为4，5 在B分区 分区路径改为其他文件夹
+partition C values less than (MAXVALUE)  --其他数据在C分区
+)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;合并分区: &lt;code&gt;alter table 表名 reorganize partition 分区1，分区2 into (partiton 分区名 values less tan (xxx))&lt;/code&gt;&lt;br /&gt;
+删除分区(不丢失数据): &lt;code&gt;alter table 表名 remove partitioning;&lt;/code&gt;&lt;br /&gt;
+丢弃分区（丢失数据): &lt;code&gt;alter table 表名 drop partition;&lt;/code&gt;  &lt;/p&gt;
+
+&lt;p&gt;从指定分区查询数据:
+&lt;code&gt;select * from xxx partition(A)&lt;/code&gt;  &lt;/p&gt;
+
+&lt;p&gt;一般按照数据类别如文章的分类，日期如文章发布日期，等指标来分区，数据量小不需要分区 一般分区区间跨度为5~10万&lt;/p&gt;
+</description>
+        <pubDate>Sat, 30 Jan 2016 00:00:00 +0800</pubDate>
+        <link>http://www.54gaozhe.com/notes/2016/01/30/mysql-partition.html</link>
+        <guid isPermaLink="true">http://www.54gaozhe.com/notes/2016/01/30/mysql-partition.html</guid>
+        
+        <category>mysql</category>
+        
+        
+        <category>notes</category>
+        
+      </item>
+    
+      <item>
+        <title>Java命令：JPS</title>
+        <description>&lt;p&gt;jps(Java Virtual Machine Process Status Tool)是JDK 1.5提供的一个显示当前所有java进程pid的命令，简单实用，非常适合在linux/unix平台上简单察看当前java进程的一些简单情况。
+&lt;!-- more --&gt; 
+&lt;strong&gt;&lt;em&gt;位置：&lt;/em&gt;&lt;/strong&gt;jdk的JAVA_HOME/bin/目录下面  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;原理：&lt;/em&gt;&lt;/strong&gt;java程序在启动以后，会在java.io.tmpdir指定的目录下，就是临时文件夹里，生成一个类似于hsperfdata_User的文件夹，这个文件夹里（在Linux中为/tmp/hsperfdata_{userName}/），有几个文件，名字就是java进程的pid，因此列出当前运行的java进程，只是把这个目录里的文件名列一下而已。 至于系统的参数什么，就可以解析这几个文件获得。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;参数：&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;-q 只显示pid，不显示class名称,jar文件名和传递给main 方法的参数&lt;br /&gt;
+-m 输出传递给main 方法的参数，在嵌入式jvm上可能是null&lt;br /&gt;
+-l 输出应用程序main class的完整package名 或者 应用程序的jar文件完整路径名&lt;br /&gt;
+-v 输出传递给JVM的参数   &lt;/p&gt;
+
+&lt;p&gt;jps是我最常用的java命令。使用jps可以查看当前有哪些Java进程处于运行状态。如果我运行了一个web应用（使用tomcat、jboss、jetty等启动）的时候，我就可以使用jps查看启动情况。有的时候我想知道这个应用的日志会输出到哪里，或者启动的时候使用了哪些javaagent，那么我可以使用jps -v 查看进程的jvm参数情况。  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;常见错误：&lt;/em&gt;&lt;/strong&gt; &lt;br /&gt;
+用ps-ef|grep java能看到启动的java进程，但是用jps查看却不存在该进程的id。jconsole、jvisualvm可能无法监控该进程，其他java自带工具也可能无法使用  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;分析：&lt;/em&gt;&lt;/strong&gt; jps、jconsole、jvisualvm等工具的数据来源就是这个文件（/tmp/hsperfdata_userName/pid)。所以当该文件不存在或是无法读取时就会出现jps无法查看该进程号，jconsole无法监控等问题  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;原因：&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;磁盘读写、目录权限问题 若该用户没有权限写/tmp目录或是磁盘已满，则无法创建/tmp/hsperfdata_userName/pid文件。或该文件已经生成，但用户没有读权限,该文件应与当前用户属于同一用户组  &lt;/li&gt;
+  &lt;li&gt;临时文件丢失，被删除或是定期清理 对于linux机器，一般都会存在定时任务对临时文件夹进行清理，导致/tmp目录被清空。这也是我第一次碰到该现象的原因。常用的可能定时删除临时目录的工具为crontab、redhat的tmpwatch、ubuntu的tmpreaper等等&lt;br /&gt;
+这个导致的现象可能会是这样，用jconsole监控进程，发现在某一时段后进程仍然存在，但是却没有监控信息了  &lt;/li&gt;
+  &lt;li&gt;java进程信息文件存储地址被设置，不在/tmp目录下 上面我们在介绍时说默认会在/tmp/hsperfdata_userName目录保存进程信息，但由于以上1、2所述原因，可能导致该文件无法生成或是丢失，所以java启动时提供了参数(-Djava.io.tmpdir)，可以对这个文件的位置进行设置，而jps、jconsole都只会从/tmp目录读取，而无法从设置后的目录读取信息  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Sat, 30 Jan 2016 00:00:00 +0800</pubDate>
+        <link>http://www.54gaozhe.com/notes/2016/01/30/cmd-java-jps.html</link>
+        <guid isPermaLink="true">http://www.54gaozhe.com/notes/2016/01/30/cmd-java-jps.html</guid>
+        
+        <category>java命令</category>
+        
+        
+        <category>notes</category>
+        
+      </item>
+    
+      <item>
+        <title>Mysql中的查询优化</title>
+        <description>&lt;h2 id=&quot;explain&quot;&gt;explain命令&lt;/h2&gt;
+
+&lt;p&gt;用于分析查询语句的执行情况接成本预估&lt;br /&gt;
+使用方法:&lt;br /&gt;
+&lt;!-- more --&gt;
+~~~ sql&lt;/p&gt;
+
+&lt;p&gt;explain select aaa from xxx where id=5;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+查询结果中有一个type字段,此字段的值可作为我们优化sql查询的关键指标  
+type指标中查询效果由好到坏依次为:  
+system const eq_ref ref fulltxt ref_or_null index_merge unique_subquery index_subquery range index ALL  
+const 根据主键或唯一索引取出确定的一行数据。最快的一种 system为const的特例优化时暂不考虑  
+fulltxt 全文索引,后面会写到全文索引的基本用法  
+range 索引或主键在某一范围内  
+index 仅仅只有索引被扫描  
+ALL 为全表扫描，应尽量避免  
+平时写sql查询时应避免全表扫描,尽量使其type为range以保证查询效率
+
+## 使用limit分页时需要注意的地方
+
+通过limit进行查询时即使使用了索引当数据量很大时也会导致查询缓慢  
+`select aaa from xxx order by id  limit 2000,20` 的执行时间是 limit 0,20 的10几倍， limit 20000,20 的话更慢。  
+上述语句 type 为index  
+在where条件中规定id的范围使其type指标变为range可加快查询速度  
+利用上一次的查询结果构造下一次的查询条件  
+如第二页的查询方法原来的sql语句为:`select aaa from xxx order by id limit 20 ,20`  
+可使用下面的sql语句优化:
+
+~~~ sql
+
+set @getid=(select id from xxx order by id limit(20,1));
+select aaa from xxx where id&amp;gt;=@getid order by id  limit 20 ;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此时type为range 虽然第一步查询稍慢 但是比原来强很多.&lt;/p&gt;
+
+&lt;h2 id=&quot;like-&quot;&gt;like 以及全文索引的使用&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;select aaa from xxx where name like &#39;gaozhe%&#39; order by id limit 0,20&lt;/code&gt;&lt;br /&gt;
+此时type指标虽然为index 但是在数据量大的时候依旧很慢，原因是type挂在了 order by 语句上 id为索引.&lt;br /&gt;
+如下sql去掉 order by 此时type为ALL&lt;br /&gt;
+&lt;code&gt;select aaa from xxx where name like &#39;gaozhe%&#39; limit 0,20&lt;/code&gt;&lt;br /&gt;
+当为name字段加索引后运行以上查询，type为 range,但是百分号必须在like条件字符串的后面或者中间&lt;br /&gt;
+如果百分号放在了开头 如：&lt;code&gt;select aaa from xxx where name like &#39;%gaozhe&#39; limit 0,20 &lt;/code&gt;,此时type变成了ALL，应该避免此种用法  &lt;/p&gt;
+
+&lt;h3 id=&quot;fulltxt&quot;&gt;fulltxt全文索引&lt;/h3&gt;
+
+&lt;p&gt;可以为name字段加full txt全文索引，用全文索引需要在配置文件中增加全文索引配置,具体配置可参考手册  &lt;br /&gt;
+其中 ft_min_word_len 表示索引最小长度，默认是4支持中文应该改成2或1不然长度小于4的词无法被索引&lt;br /&gt;
+基本用法: &lt;code&gt;select aaa from xxx where match(name) against(&#39;gaozhe&#39;) limit 0,20&lt;/code&gt;&lt;br /&gt;
+此条sql type 为 fulltxt 效果比range还好  &lt;/p&gt;
+
+&lt;p&gt;但是一般生产环境不使用全文索引，而是推荐使用第三方工具如：Coreseek  &lt;/p&gt;
+</description>
+        <pubDate>Fri, 29 Jan 2016 00:00:00 +0800</pubDate>
+        <link>http://www.54gaozhe.com/notes/2016/01/29/sql-query-optimize.html</link>
+        <guid isPermaLink="true">http://www.54gaozhe.com/notes/2016/01/29/sql-query-optimize.html</guid>
+        
+        <category>mysql</category>
+        
+        
+        <category>notes</category>
+        
+      </item>
+    
+      <item>
+        <title>Mysql中的表锁和行锁</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;表级锁&lt;/h2&gt;
+
+&lt;p&gt;锁住整张表 其他事物进不来&lt;br /&gt;
+myisam innodb都支持表级锁&lt;br /&gt;
+&lt;!-- more --&gt;
+### 读锁  lock table xxx read&lt;/p&gt;
+
+&lt;p&gt;当前会话不可写&lt;br /&gt;
+其他会话 不可写 可读   &lt;/p&gt;
+
+&lt;h3 id=&quot;lock-table-xxx-read&quot;&gt;写锁 lock table xxx read&lt;/h3&gt;
+
+&lt;p&gt;当前会话可写 可读&lt;br /&gt;
+其他会话 不可写 不可读&lt;/p&gt;
+
+&lt;h3 id=&quot;unlock-tables&quot;&gt;解锁unlock tables&lt;/h3&gt;
+
+&lt;p&gt;把当前会话所有锁住的表解锁，如果忘记解锁 当再次加锁时会自动释放上一次的锁&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;行锁&lt;/h2&gt;
+
+&lt;p&gt;行锁 最小粒度锁，真正的事物锁&lt;br /&gt;
+只有innodb支持&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Mysql事物支持:使用 start TRANSACTION&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;行锁是索引级别不是记录级别的&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;如果加锁的sql语句where条件中没有用到索引，则会导致锁住整张表&lt;br /&gt;
+加锁sql语句中给索引加锁，但是其他会话更新操作没有使用索引字段同样无法更新&lt;br /&gt;
+索引无论加锁会话还是更新会话都需要使用索引字段  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;select-aaa-from-xxxx-where-cd--lock-in-share-mode&quot;&gt;共享锁 select aaa from xxxx where c=d  LOCK IN SHARE MODE&lt;/h3&gt;
+
+&lt;p&gt;select 出来的行数据只有当前会话可修改，直至commit或rollback之后其他会话才能修改，但是加锁过程中其他会话可读&lt;/p&gt;
+
+&lt;h3 id=&quot;select-aaa-from-xxxx-where-cd--for-update&quot;&gt;排他锁 select aaa from xxxx where c=d  FOR UPDATE&lt;/h3&gt;
+
+&lt;p&gt;其他会话依然不可写但是可以普通读，再次加锁会产生冲突&lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 Jan 2016 00:00:00 +0800</pubDate>
+        <link>http://www.54gaozhe.com/notes/2016/01/28/mysql-lock.html</link>
+        <guid isPermaLink="true">http://www.54gaozhe.com/notes/2016/01/28/mysql-lock.html</guid>
+        
+        <category>mysql</category>
+        
+        
+        <category>notes</category>
+        
+      </item>
+    
+      <item>
+        <title>初学scala常见问题汇总</title>
+        <description>&lt;h2 id=&quot;scala-objectclass&quot;&gt;scala object和class的区别&lt;/h2&gt;
+&lt;p&gt;scala中没有static关键字，object 中的东西都是java中的static，object是包含static方法的singleton
+object伴生对象本身就是一个Singleton，不同的是，它有一个与之同名的类（这里的class Companion），二者可以相互访问彼此的私有成员。两者必须定义在同一文件中
+&lt;!-- more --&gt;
+## implicit关键字的作用
+Scala提供的隐式转换特性可以在效果上给一个类增加一些方法，或者用于接收不同类型的对象.&lt;br /&gt;
+Scala 可以用 implicit class 来声明类，并且它的主构造器 (Primary Constructor) 只有一个参数时，就可以用来把参数隐式转换成该类型。&lt;br /&gt;
+&lt;a href=&quot;http://unmi.cc/scala-2-10-0-new-features-implicit-class/&quot;&gt;Scala 2.10.0 新特性之使用隐式类进行类型隐式转换&lt;/a&gt;  &lt;/p&gt;
+
+&lt;p&gt;implicit关键字定义一个类型在需要时，如何自动转换成另外一种类型。 &lt;br /&gt;
+只有哪些使用implicit关键字的定义才是可以使用的隐式定义。关键字implicit用来标记一个隐式定义。编译器才可以选择它作为隐式变化的候选项。你可以使用implicit来标记任意变量，函数或是对象。 &lt;br /&gt;
+编译器在选择备选implicit定义时，只会选取当前作用域的定义&lt;br /&gt;
+&lt;a href=&quot;http://www.tuicool.com/articles/fuy6Jz&quot;&gt;Scala 专题教程-隐式变换和隐式参数(2):使用implicits的一些规则&lt;/a&gt;&lt;br /&gt;
+以下下代码定义了如何将元组转化为NameValuePair&lt;br /&gt;
+implicit def tupleToNameValuePair(pair : (String, String)) : NameValuePair = new BasicNameValuePair(pair._1, pair._2)
+## scala val和var
+val不可改变变量内容，而var是可以为变量重新赋值的,scala不建议过多使用var&lt;br /&gt;
+&lt;a href=&quot;http://developer.51cto.com/art/200907/134956.htm&quot;&gt;理解Scala的函数式风格：从var到val的转变&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 Jan 2016 00:00:00 +0800</pubDate>
+        <link>http://www.54gaozhe.com/notes/2016/01/27/scala-problem.html</link>
+        <guid isPermaLink="true">http://www.54gaozhe.com/notes/2016/01/27/scala-problem.html</guid>
+        
+        <category>scala</category>
+        
+        
+        <category>notes</category>
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body>
+  <div class="wrapper">
+    <center>
+      <a href="/index.html">
+        <div class="site-title"> {{site.title}} </div>
+      </a>
+    </center>
+  </div>
+  <div class="wrapper site-description">
+    <center> {{site.description}} </center>
+  </div>
+  <div class="wrapper">
+    <div class="trigger site-navigation">
+      <a class="page-link" href="/index.html">首页</a>
+      <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+      <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+      <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+      <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+      <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="wrapper">
+      <article class="post">
+        {%if page.tagline%}
+        <div class="tagline">
+          <span class="page-title">{{page.title}}</span>
+          <span class="page-tagline">
+            <em>{{page.tagline}}</em>
+          </span>
+        </div>
+        {% endif %}
+
+        <div class="post-content">
+          {{ content }}
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+
+  {% include footer.html %}
+
+</body>
+
+</html>

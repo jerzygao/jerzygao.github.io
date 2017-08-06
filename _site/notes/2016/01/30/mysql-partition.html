@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Mysql中的分区功能</title>
+  <meta name="description" content="分区当数据量大的时候仅仅使用索引是不够的，这时候可以使用Mysql的一个功能：分区将数据划分为多块在多个位置存放，可以是不同的磁盘也可以是不同的机器分区后表面还是一张表但是数据散列在不同的位置读写时没有任何区别Mysql自动组织分区数据  ">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://www.54gaozhe.com/notes/2016/01/30/mysql-partition.html">
+  <link rel="alternate" type="application/rss+xml" title="Gaozhe'blog" href="http://www.54gaozhe.com/feed.xml">
+  <!-- 百度站长平台验证标签-->
+  <meta name="baidu-site-verification" content="WbsvcIEgEn" />
+</head>
+
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Gaozhe'blog </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Gaozhe'blog </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="/index.html">首页</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+
+  <!-- 列出所有根目录下的页面链接，about.md 这些页面，但是我不希望列出所有，所以先注掉，写死首页头部导航
+  
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/sitemap.xml">Sitemap</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <!-- -->
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/2016/01/30/mysql-partition.html">Mysql中的分区功能</a></h1>
+  <center>  <p class="post-meta"><time datetime="2016-01-30T00:00:00+08:00" itemprop="datePublished">Jan 30, 2016</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>分区<br />
+当数据量大的时候仅仅使用索引是不够的，这时候可以使用Mysql的一个功能：分区<br />
+将数据划分为多块在多个位置存放，可以是不同的磁盘也可以是不同的机器<br />
+分区后表面还是一张表但是数据散列在不同的位置<br />
+读写时没有任何区别Mysql自动组织分区数据<br />
+<!-- more -->
+分区的四种形式: range list hash key  </p>
+
+<p>以range使用为例:<br />
+新建分区:</p>
+
+<pre><code>
+alter table xxx partition  by range(id)(
+partition A values less than (4),   --xxx表id为1，2，3的数据在A分区
+partition B values less than (6) data DIRECTORY ='D:/data/b' INDEX DIRECTORY='D:/data/b' ,   --xxx表id为4，5 在B分区 分区路径改为其他文件夹
+partition C values less than (MAXVALUE)  --其他数据在C分区
+)
+
+</code></pre>
+
+<p>合并分区: <code>alter table 表名 reorganize partition 分区1，分区2 into (partiton 分区名 values less tan (xxx))</code><br />
+删除分区(不丢失数据): <code>alter table 表名 remove partitioning;</code><br />
+丢弃分区（丢失数据): <code>alter table 表名 drop partition;</code>  </p>
+
+<p>从指定分区查询数据:
+<code>select * from xxx partition(A)</code>  </p>
+
+<p>一般按照数据类别如文章的分类，日期如文章发布日期，等指标来分区，数据量小不需要分区 一般分区区间跨度为5~10万</p>
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/notes/2016/01/30/cmd-java-jps.html">
+        &laquo; Java命令：JPS
+    </a>
+  
+  
+    <a class="postNext" href="/notes/2016/01/31/mysql-master-slave.html">
+        Mysql中的主从配置 &raquo;
+    </a>
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Gaozhe'blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          
+          <li>
+            <li>Weibo：<a href="http://weibo.com/54gaozhe">敲代码的高双喜</a></li>
+
+          </li>
+          
+          
+          <li>
+            <li>Weixin：<a href="http://mp.weixin.qq.com/s?__biz=MzI5MTUzNzQxNQ==&mid=2247483871&idx=1&sn=51d064eb2cca7486c58546c917477fef&chksm=ec0e56b7db79dfa12ce501f74cfa65b7afa37cd22e1ece4ad217fd0d8b01957a8e028b40e9e6#rd">敲代码的高双喜</a></li>
+
+          </li>
+          
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Gaozhe'blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

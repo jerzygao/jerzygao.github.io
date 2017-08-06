@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
+
+  
+  <url>
+    <loc>http://www.54gaozhe.com/solution/2017/01/10/get-own-vpn.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2017-01-10T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/thoughts/2016/12/23/read-biocentrism.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-12-23T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/coding/2016/03/05/rabit-carry-carrot.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-03-05T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/coding/2016/03/02/spider-and-antispider.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-03-02T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2016/01/31/mysql-master-slave.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-01-31T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2016/01/30/mysql-partition.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-01-30T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2016/01/30/cmd-java-jps.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-01-30T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2016/01/29/sql-query-optimize.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-01-29T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2016/01/28/mysql-lock.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-01-28T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2016/01/27/scala-problem.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-01-27T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/solution/2016/01/25/git-log-cmd.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-01-25T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2016/01/08/common-regex.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-01-08T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/life/2015/12/13/translate-the-next-episode.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-12-13T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/solution/2015/11/23/punctuation-del-java.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-11-23T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/solution/2015/11/21/remote-log.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-11-21T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/coding/2015/11/16/oom-error-java.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-11-16T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2015/11/12/linux-shell.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-11-12T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/solution/2015/10/22/Graphics-Device-initialization-failed-exception.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-10-22T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/solution/2015/10/14/no-toolkit-found-error.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-10-14T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2015/10/14/cmd-of-linux.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-10-14T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/coding/2015/10/13/guava-ratelimter.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-10-13T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/solution/2015/10/12/generic-array-error.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-10-12T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2015/10/02/setup-grails-dev-environment.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-10-02T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/life/2015/09/27/mid-autumn.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-09-27T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.54gaozhe.com/notes/2015/07/03/photography-foundation.html</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-07-03T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+
+  <url>
+	<loc>http://www.54gaozhe.com</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+</urlset>

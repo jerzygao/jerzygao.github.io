@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>初学scala常见问题汇总</title>
+  <meta name="description" content="scala object和class的区别scala中没有static关键字，object 中的东西都是java中的static，object是包含static方法的singletonobject伴生对象本身就是一个Singleton，不同的是，它有一个与之同名的类（这里的class Companion），二者可...">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://www.54gaozhe.com/notes/2016/01/27/scala-problem.html">
+  <link rel="alternate" type="application/rss+xml" title="Gaozhe'blog" href="http://www.54gaozhe.com/feed.xml">
+  <!-- 百度站长平台验证标签-->
+  <meta name="baidu-site-verification" content="WbsvcIEgEn" />
+</head>
+
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Gaozhe'blog </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Gaozhe'blog </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="/index.html">首页</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+
+  <!-- 列出所有根目录下的页面链接，about.md 这些页面，但是我不希望列出所有，所以先注掉，写死首页头部导航
+  
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/sitemap.xml">Sitemap</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <!-- -->
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/2016/01/27/scala-problem.html">初学scala常见问题汇总</a></h1>
+  <center>  <p class="post-meta"><time datetime="2016-01-27T00:00:00+08:00" itemprop="datePublished">Jan 27, 2016</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="scala-objectclass">scala object和class的区别</h2>
+<p>scala中没有static关键字，object 中的东西都是java中的static，object是包含static方法的singleton
+object伴生对象本身就是一个Singleton，不同的是，它有一个与之同名的类（这里的class Companion），二者可以相互访问彼此的私有成员。两者必须定义在同一文件中
+<!-- more -->
+## implicit关键字的作用
+Scala提供的隐式转换特性可以在效果上给一个类增加一些方法，或者用于接收不同类型的对象.<br />
+Scala 可以用 implicit class 来声明类，并且它的主构造器 (Primary Constructor) 只有一个参数时，就可以用来把参数隐式转换成该类型。<br />
+<a href="http://unmi.cc/scala-2-10-0-new-features-implicit-class/">Scala 2.10.0 新特性之使用隐式类进行类型隐式转换</a>  </p>
+
+<p>implicit关键字定义一个类型在需要时，如何自动转换成另外一种类型。 <br />
+只有哪些使用implicit关键字的定义才是可以使用的隐式定义。关键字implicit用来标记一个隐式定义。编译器才可以选择它作为隐式变化的候选项。你可以使用implicit来标记任意变量，函数或是对象。 <br />
+编译器在选择备选implicit定义时，只会选取当前作用域的定义<br />
+<a href="http://www.tuicool.com/articles/fuy6Jz">Scala 专题教程-隐式变换和隐式参数(2):使用implicits的一些规则</a><br />
+以下下代码定义了如何将元组转化为NameValuePair<br />
+implicit def tupleToNameValuePair(pair : (String, String)) : NameValuePair = new BasicNameValuePair(pair._1, pair._2)
+## scala val和var
+val不可改变变量内容，而var是可以为变量重新赋值的,scala不建议过多使用var<br />
+<a href="http://developer.51cto.com/art/200907/134956.htm">理解Scala的函数式风格：从var到val的转变</a></p>
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/solution/2016/01/25/git-log-cmd.html">
+        &laquo; 使用git log做简单的统计
+    </a>
+  
+  
+    <a class="postNext" href="/notes/2016/01/28/mysql-lock.html">
+        Mysql中的表锁和行锁 &raquo;
+    </a>
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Gaozhe'blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          
+          <li>
+            <li>Weibo：<a href="http://weibo.com/54gaozhe">敲代码的高双喜</a></li>
+
+          </li>
+          
+          
+          <li>
+            <li>Weixin：<a href="http://mp.weixin.qq.com/s?__biz=MzI5MTUzNzQxNQ==&mid=2247483871&idx=1&sn=51d064eb2cca7486c58546c917477fef&chksm=ec0e56b7db79dfa12ce501f74cfa65b7afa37cd22e1ece4ad217fd0d8b01957a8e028b40e9e6#rd">敲代码的高双喜</a></li>
+
+          </li>
+          
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Gaozhe'blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

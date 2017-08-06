@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>极简教程 | 8分钟搭建自己的海外私有VPN服务器</title>
+  <meta name="description" content="本教程介绍如何使用海外VPS搭建VPN服务器。无需任何命令，不需要懂技术，完全傻瓜式操作，任何人都可以看懂。">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://www.54gaozhe.com/solution/2017/01/10/get-own-vpn.html">
+  <link rel="alternate" type="application/rss+xml" title="Gaozhe'blog" href="http://www.54gaozhe.com/feed.xml">
+  <!-- 百度站长平台验证标签-->
+  <meta name="baidu-site-verification" content="WbsvcIEgEn" />
+</head>
+
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Gaozhe'blog </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Gaozhe'blog </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="/index.html">首页</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+
+  <!-- 列出所有根目录下的页面链接，about.md 这些页面，但是我不希望列出所有，所以先注掉，写死首页头部导航
+  
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/sitemap.xml">Sitemap</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <!-- -->
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/solution/2017/01/10/get-own-vpn.html">极简教程 | 8分钟搭建自己的海外私有VPN服务器</a></h1>
+  <center>  <p class="post-meta"><time datetime="2017-01-10T00:00:00+08:00" itemprop="datePublished">Jan 10, 2017</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>本教程介绍如何使用海外VPS搭建VPN服务器。无需任何命令，不需要懂技术，完全傻瓜式操作，任何人都可以看懂。</p>
+
+<!-- more -->
+
+<p>海外VPS服务商很多，当然也可以选择国内云服务商的海外服务器，但是国内的价钱很贵，国内一个月的价钱在国外可以租用将近一年。所以本教程中选择的VPS服务商是 
+<a href="[https://bandwagonhost.com]" title="[https://bandwagonhost.com]">https://bandwagonhost.com</a>
+如果上述地址无法访问，可以尝试下面的镜像地址
+<a href="https://bwh1.net"> https://bwh1.net </a>
+打开上述地址后可看到一个上世纪90年代风格的网页，点击register进入注册页面注册一个账号。
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn1.jpg" alt="" />
+注册账号大家肯定都会
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn2.jpg" alt="" />
+填写完基本信息后，需要输入验证码勾选协议然后提交，验证码那里需要注意的是这个网站验证码API使用的是谷歌的，所以如果你刷不出来验证码的话，呃，你可能需要一个VPN，国内某些VPN提供商有限时免费的账号，大家可以暂时使用把验证码刷出来。
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn3.jpg" alt="" />
+然后使用新注册的账号登录网站，购买最便宜的VPS。<br />
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn4.jpg" alt="" />
+购买流程大同小异，我这里购买的是一年。
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn5.jpg" alt="" />
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn6.jpg" alt="" />
+然后付款就好了，这个网站支持支付宝，一年20刀很便宜。
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn7.jpg" alt="" />
+支付完成后，去服务器管理页面，进入服务器控制台。
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn8.jpg" alt="" />
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn9.jpg" alt="" />
+点击控制台最下方的Shadowsocks Server，安装ss服务器
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn10.jpg" alt="" />
+安装完ss服务器之后就可以在控制台看到VPN的相关信息了。然后配置自己电脑上的小飞机就可以科学上网了。
+<img src="http://ojtm3l2wh.bkt.clouddn.com/image/vpn11.jpg" alt="" />
+不会配置小飞机的也没关系，在上面那个页面下方就有小飞机的使用说明。</p>
+
+<p>以上就是简单的配置一下就可以搭建自己的VPN实现科学上网的方法。大家可以看到我们全程都没有登录我们购买的VPS，也没有任何linux命令，不需要任何服务器配置。这个网站貌似就是为搭VPN而生的，这也是我为什么选择这个VPS服务商写这个教程的原因，因为选择这个VPS服务商，不懂技术的人也可以一步步配置出自己的VPN。</p>
+
+<p>好了，教程方面我就写完了，接下来就是吐槽时间了。</p>
+
+<p>在国内想上网都得费死劲这个事我就不吐槽了，谁叫咱生活在长城内呢！但是！某些VPN服务商也太烂了，去年年初我刚把我在海外的服务器停了，改用国内的VPN服务商的服务，我买了两年的VPN服务，按理应该在明年的春天我的VPN服务才到期，结果今天我发现不但VPN服务用不了了，连服务商的官网都踏马没了。</p>
+
+<p>国内这些厂商果然还是不靠谱啊，我还是回归到老方法自己搭VPN用啊！</p>
+
+<p>最后，还是放上1987年9月20日20点55分中国用互联网向世界发出的第一封电子邮件的内容：</p>
+
+<p>Across the Great Wall we can reach every corner in the world.</p>
+
+<p><img src="http://ojtm3l2wh.bkt.clouddn.com/weixin/qrcode.jpg" alt="" />  </p>
+
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/thoughts/2016/12/23/read-biocentrism.html">
+        &laquo; 人并不存在真正的死亡 | 生物中心主义-宇宙新理论的奠基之作
+    </a>
+  
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Gaozhe'blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          
+          <li>
+            <li>Weibo：<a href="http://weibo.com/54gaozhe">敲代码的高双喜</a></li>
+
+          </li>
+          
+          
+          <li>
+            <li>Weixin：<a href="http://mp.weixin.qq.com/s?__biz=MzI5MTUzNzQxNQ==&mid=2247483871&idx=1&sn=51d064eb2cca7486c58546c917477fef&chksm=ec0e56b7db79dfa12ce501f74cfa65b7afa37cd22e1ece4ad217fd0d8b01957a8e028b40e9e6#rd">敲代码的高双喜</a></li>
+
+          </li>
+          
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Gaozhe'blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

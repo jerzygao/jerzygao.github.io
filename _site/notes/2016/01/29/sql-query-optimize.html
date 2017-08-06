@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Mysql中的查询优化</title>
+  <meta name="description" content="explain命令用于分析查询语句的执行情况接成本预估使用方法:  ">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://www.54gaozhe.com/notes/2016/01/29/sql-query-optimize.html">
+  <link rel="alternate" type="application/rss+xml" title="Gaozhe'blog" href="http://www.54gaozhe.com/feed.xml">
+  <!-- 百度站长平台验证标签-->
+  <meta name="baidu-site-verification" content="WbsvcIEgEn" />
+</head>
+
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Gaozhe'blog </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Gaozhe'blog </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="/index.html">首页</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+
+  <!-- 列出所有根目录下的页面链接，about.md 这些页面，但是我不希望列出所有，所以先注掉，写死首页头部导航
+  
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/sitemap.xml">Sitemap</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <!-- -->
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/2016/01/29/sql-query-optimize.html">Mysql中的查询优化</a></h1>
+  <center>  <p class="post-meta"><time datetime="2016-01-29T00:00:00+08:00" itemprop="datePublished">Jan 29, 2016</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="explain">explain命令</h2>
+
+<p>用于分析查询语句的执行情况接成本预估<br />
+使用方法:<br />
+<!-- more -->
+~~~ sql</p>
+
+<p>explain select aaa from xxx where id=5;</p>
+
+<pre><code>
+查询结果中有一个type字段,此字段的值可作为我们优化sql查询的关键指标  
+type指标中查询效果由好到坏依次为:  
+system const eq_ref ref fulltxt ref_or_null index_merge unique_subquery index_subquery range index ALL  
+const 根据主键或唯一索引取出确定的一行数据。最快的一种 system为const的特例优化时暂不考虑  
+fulltxt 全文索引,后面会写到全文索引的基本用法  
+range 索引或主键在某一范围内  
+index 仅仅只有索引被扫描  
+ALL 为全表扫描，应尽量避免  
+平时写sql查询时应避免全表扫描,尽量使其type为range以保证查询效率
+
+## 使用limit分页时需要注意的地方
+
+通过limit进行查询时即使使用了索引当数据量很大时也会导致查询缓慢  
+`select aaa from xxx order by id  limit 2000,20` 的执行时间是 limit 0,20 的10几倍， limit 20000,20 的话更慢。  
+上述语句 type 为index  
+在where条件中规定id的范围使其type指标变为range可加快查询速度  
+利用上一次的查询结果构造下一次的查询条件  
+如第二页的查询方法原来的sql语句为:`select aaa from xxx order by id limit 20 ,20`  
+可使用下面的sql语句优化:
+
+~~~ sql
+
+set @getid=(select id from xxx order by id limit(20,1));
+select aaa from xxx where id&gt;=@getid order by id  limit 20 ;
+
+</code></pre>
+
+<p>此时type为range 虽然第一步查询稍慢 但是比原来强很多.</p>
+
+<h2 id="like-">like 以及全文索引的使用</h2>
+
+<p><code>select aaa from xxx where name like 'gaozhe%' order by id limit 0,20</code><br />
+此时type指标虽然为index 但是在数据量大的时候依旧很慢，原因是type挂在了 order by 语句上 id为索引.<br />
+如下sql去掉 order by 此时type为ALL<br />
+<code>select aaa from xxx where name like 'gaozhe%' limit 0,20</code><br />
+当为name字段加索引后运行以上查询，type为 range,但是百分号必须在like条件字符串的后面或者中间<br />
+如果百分号放在了开头 如：<code>select aaa from xxx where name like '%gaozhe' limit 0,20 </code>,此时type变成了ALL，应该避免此种用法  </p>
+
+<h3 id="fulltxt">fulltxt全文索引</h3>
+
+<p>可以为name字段加full txt全文索引，用全文索引需要在配置文件中增加全文索引配置,具体配置可参考手册  <br />
+其中 ft_min_word_len 表示索引最小长度，默认是4支持中文应该改成2或1不然长度小于4的词无法被索引<br />
+基本用法: <code>select aaa from xxx where match(name) against('gaozhe') limit 0,20</code><br />
+此条sql type 为 fulltxt 效果比range还好  </p>
+
+<p>但是一般生产环境不使用全文索引，而是推荐使用第三方工具如：Coreseek  </p>
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/notes/2016/01/28/mysql-lock.html">
+        &laquo; Mysql中的表锁和行锁
+    </a>
+  
+  
+    <a class="postNext" href="/notes/2016/01/30/cmd-java-jps.html">
+        Java命令：JPS &raquo;
+    </a>
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Gaozhe'blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          
+          <li>
+            <li>Weibo：<a href="http://weibo.com/54gaozhe">敲代码的高双喜</a></li>
+
+          </li>
+          
+          
+          <li>
+            <li>Weixin：<a href="http://mp.weixin.qq.com/s?__biz=MzI5MTUzNzQxNQ==&mid=2247483871&idx=1&sn=51d064eb2cca7486c58546c917477fef&chksm=ec0e56b7db79dfa12ce501f74cfa65b7afa37cd22e1ece4ad217fd0d8b01957a8e028b40e9e6#rd">敲代码的高双喜</a></li>
+
+          </li>
+          
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Gaozhe'blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

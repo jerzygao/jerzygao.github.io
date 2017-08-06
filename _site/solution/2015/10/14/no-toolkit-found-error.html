@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>解决UI4Jwebkit部署在linux服务器出现No toolkit found运行时异常</title>
+  <meta name="description" content="  使用UI4Jwebkit时部署在linux服务器出现No toolkit found运行时异常。异常信息如下：">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://www.54gaozhe.com/solution/2015/10/14/no-toolkit-found-error.html">
+  <link rel="alternate" type="application/rss+xml" title="Gaozhe'blog" href="http://www.54gaozhe.com/feed.xml">
+  <!-- 百度站长平台验证标签-->
+  <meta name="baidu-site-verification" content="WbsvcIEgEn" />
+</head>
+
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Gaozhe'blog </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Gaozhe'blog </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="/index.html">首页</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+
+  <!-- 列出所有根目录下的页面链接，about.md 这些页面，但是我不希望列出所有，所以先注掉，写死首页头部导航
+  
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/sitemap.xml">Sitemap</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <!-- -->
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/solution/2015/10/14/no-toolkit-found-error.html">解决UI4Jwebkit部署在linux服务器出现No toolkit found运行时异常</a></h1>
+  <center>  <p class="post-meta"><time datetime="2015-10-14T00:00:00+08:00" itemprop="datePublished">Oct 14, 2015</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>  使用UI4Jwebkit时部署在linux服务器出现No toolkit found运行时异常。异常信息如下：
+<!-- more --></p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">RuntimeException</span><span class="o">:</span> <span class="n">No</span> <span class="n">toolkit</span> <span class="n">found</span>
+        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">sun</span><span class="o">.</span><span class="na">javafx</span><span class="o">.</span><span class="na">tk</span><span class="o">.</span><span class="na">Toolkit</span><span class="o">.</span><span class="na">getToolkit</span><span class="o">(</span><span class="n">Toolkit</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">210</span><span class="o">)</span> <span class="o">~[</span><span class="n">jfxrt</span><span class="o">.</span><span class="na">jar</span><span class="o">:</span><span class="n">na</span><span class="o">]</span>
+        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">sun</span><span class="o">.</span><span class="na">javafx</span><span class="o">.</span><span class="na">application</span><span class="o">.</span><span class="na">PlatformImpl</span><span class="o">.</span><span class="na">isFxApplicationThread</span><span class="o">(</span><span class="n">PlatformImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">264</span><span class="o">)</span> <span class="o">~[</span><span class="n">jfxrt</span><span class="o">.</span><span class="na">jar</span><span class="o">:</span><span class="n">na</span><span class="o">]</span>
+        <span class="n">at</span> <span class="n">javafx</span><span class="o">.</span><span class="na">application</span><span class="o">.</span><span class="na">Platform</span><span class="o">.</span><span class="na">isFxApplicationThread</span><span class="o">(</span><span class="n">Platform</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">99</span><span class="o">)</span> <span class="o">~[</span><span class="n">jfxrt</span><span class="o">.</span><span class="na">jar</span><span class="o">:</span><span class="n">na</span><span class="o">]</span></code></pre></div>
+
+<p>  要解决此问题首先需要将jre/lib/ext/jfxrt.jar移动到jre/lib 下，然后参照UI4J 官方说明解决，<a href="https://github.com/ui4j/ui4j">官方说明</a>,摘录如下：
+&gt;Supported Platforms
+Ui4j has been tested under Windows 8.1 and Ubuntu 14.04, but should work on any platform where a Java 8 JRE or JDK is available.
+## Headless Mode
+Ui4j can be run in “headless” mode using Xfvb or with using Monocle.
+## Headless Mode with Xfvb
+Sample configuration for ubuntu running with headless mode:
+First install these packages: sudo apt-get install xvfb x11-xkb-utils libxrender-dev libxtst-dev libgtk2.0-0
+Then start the xvfb nohup xvfb :99 -ac &amp;
+Then export the DISPLAY variable export DISPLAY=:99.0
+## Headless Mode with Monocle
+Download or add the maven dependency of latest openjfx-monocle
+Add -Dui4j.headless Java system parameter from command line or with using api System.setProperty(“ui4j.headless”, “true”);
+monocle dependency:</p>
+
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.jfxtras<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>openjfx-monocle<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.8.0_20<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
+
+<p>个人感觉使用Headless Mode with Monocle比较简单。</p>
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/notes/2015/10/14/cmd-of-linux.html">
+        &laquo; Linux常用命令
+    </a>
+  
+  
+    <a class="postNext" href="/solution/2015/10/22/Graphics-Device-initialization-failed-exception.html">
+        使用UI4J的java应用在linux服务器启动出现Graphics Device initialization failed解决办法 &raquo;
+    </a>
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Gaozhe'blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          
+          <li>
+            <li>Weibo：<a href="http://weibo.com/54gaozhe">敲代码的高双喜</a></li>
+
+          </li>
+          
+          
+          <li>
+            <li>Weixin：<a href="http://mp.weixin.qq.com/s?__biz=MzI5MTUzNzQxNQ==&mid=2247483871&idx=1&sn=51d064eb2cca7486c58546c917477fef&chksm=ec0e56b7db79dfa12ce501f74cfa65b7afa37cd22e1ece4ad217fd0d8b01957a8e028b40e9e6#rd">敲代码的高双喜</a></li>
+
+          </li>
+          
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Gaozhe'blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>mac/linux下搭建grails开发环境</title>
+  <meta name="description" content="  最近想进行一个side project决定使用grails开发，以前用windows，最近开始用MAC开发需要重新搭建开发环境，这里稍微介绍一下。  ">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://www.54gaozhe.com/notes/2015/10/02/setup-grails-dev-environment.html">
+  <link rel="alternate" type="application/rss+xml" title="Gaozhe'blog" href="http://www.54gaozhe.com/feed.xml">
+  <!-- 百度站长平台验证标签-->
+  <meta name="baidu-site-verification" content="WbsvcIEgEn" />
+</head>
+
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Gaozhe'blog </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Gaozhe'blog </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="/index.html">首页</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+
+  <!-- 列出所有根目录下的页面链接，about.md 这些页面，但是我不希望列出所有，所以先注掉，写死首页头部导航
+  
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/sitemap.xml">Sitemap</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <!-- -->
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/2015/10/02/setup-grails-dev-environment.html">mac/linux下搭建grails开发环境</a></h1>
+  <center>  <p class="post-meta"><time datetime="2015-10-02T00:00:00+08:00" itemprop="datePublished">Oct 2, 2015</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>  最近想进行一个side project决定使用grails开发，以前用windows，最近开始用MAC开发需要重新搭建开发环境，这里稍微介绍一下。<br />
+<!-- more -->
+  首先需要下载并安装grails，grails官网下载地址为<a href="https://grails.org/download.html">https://grails.org/download.html</a>里面介绍推荐使用sdkman命令安装，当然要使用sdkman命令需要先安装sdkman,安装方式在官网是这样描述的：</p>
+
+<blockquote>
+  <p>SDKMAN! (The Software Development Kit Manager)
+This tool makes installing Grails on any Bash platform (Mac OSX, Linux, Cygwin, Solaris or FreeBSD) very easy.
+Simply open a new terminal and enter:  </p>
+</blockquote>
+
+<h6 id="curl--s-getsdkmanio--bash">$ curl -s get.sdkman.io | bash</h6>
+
+<p>Follow the instructions on-screen to complete installation.<br />
+Open a new terminal or type the command:  </p>
+
+<h6 id="source-homesdkmanbinsdkman-initsh">$ source “$HOME/.sdkman/bin/sdkman-init.sh”</h6>
+
+<p>Then install the latest stable Grails:  </p>
+
+<h6 id="sdk-install-grails">$ sdk install grails</h6>
+
+<p>After installation is complete and you’ve made it your default version, test it with:  </p>
+
+<h6 id="grails--version">$ grails -version</h6>
+
+<p>That’s all there is to it!  </p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>安装过程很简单命令：curl -s get.sdkman.io</td>
+      <td>bash 安装sdkman安装完成后另开一个终端或者在原有终端执行source “$HOME/.sdkman/bin/sdkman-init.sh 执行完毕后可以直接使用命令sdk install grails安装grails，但是在国内有个问题那就是墙的问题导致下载grails-3.0.8.zip这个文件时总是下载不下来导致安装失败。我是这样解决的：</td>
+    </tr>
+  </tbody>
+</table>
+
+<ol>
+  <li>grails-3.0.8.zip在官网下载压缩包　</li>
+  <li>将压缩包放到当前用户根目录下.sdkman文件夹下archives文件夹里，例如我就放在/Users/gaozhe/.sdkman/archives中</li>
+  <li>执行sdk install grails安装grails</li>
+</ol>
+
+<p>不翻墙的话下载比较缓慢，我把我下载的文件放在<a href="http://pan.baidu.com/s/1o6vMXJk">http://pan.baidu.com/s/1o6vMXJk</a>中。下载完grails需要下载开发IDE因为没买收费的IDEA我就使用eclipse开发，spring有插件集成版的eclipse在<a href="http://spring.io/tools/ggts/all">http://spring.io/tools/ggts/all</a>可以下载Groovy/Grails Tool Suite，各个平台的版本都有。使用下载的ggts进行grails的开发还是比较便捷的。ggts下载速度比较快这里不给网盘链接了。</p>
+
+<p>这样grails开发环境就算完成了。</p>
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/life/2015/09/27/mid-autumn.html">
+        &laquo; 月色常有而知己难得－2015中秋随笔
+    </a>
+  
+  
+    <a class="postNext" href="/solution/2015/10/12/generic-array-error.html">
+        由范型数组错误引发的思考-JVM如何理解范型？ &raquo;
+    </a>
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Gaozhe'blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          
+          <li>
+            <li>Weibo：<a href="http://weibo.com/54gaozhe">敲代码的高双喜</a></li>
+
+          </li>
+          
+          
+          <li>
+            <li>Weixin：<a href="http://mp.weixin.qq.com/s?__biz=MzI5MTUzNzQxNQ==&mid=2247483871&idx=1&sn=51d064eb2cca7486c58546c917477fef&chksm=ec0e56b7db79dfa12ce501f74cfa65b7afa37cd22e1ece4ad217fd0d8b01957a8e028b40e9e6#rd">敲代码的高双喜</a></li>
+
+          </li>
+          
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Gaozhe'blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>技术笔记</title>
+  <meta name="description" content="Gaozhe'blog">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://www.54gaozhe.com/notes/">
+  <link rel="alternate" type="application/rss+xml" title="Gaozhe'blog" href="http://www.54gaozhe.com/feed.xml">
+  <!-- 百度站长平台验证标签-->
+  <meta name="baidu-site-verification" content="WbsvcIEgEn" />
+</head>
+
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Gaozhe'blog </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Gaozhe'blog </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="/index.html">首页</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+
+  <!-- 列出所有根目录下的页面链接，about.md 这些页面，但是我不希望列出所有，所以先注掉，写死首页头部导航
+  
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about.html">关于</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/archives.html">归档</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/categories.html">分类</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/coding/">编程人生</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/life/">生活随想</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/notes/">技术笔记</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/sitemap.xml">Sitemap</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/solution/">解决方案</a>
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/thoughts/">读书观影</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <!-- -->
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+  <!--  <h1 class="post-title">技术笔记</h1>-->
+  </header>
+
+  
+  <div class="tagline">
+  <span class="page-title">技术笔记</span> <span class="page-tagline"><em>技术相关备忘录</em></span>
+  </div>
+  
+
+  <div class="post-content">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2016-01-31T00:00:00+08:00" itemprop="datePublished">Jan 31, 2016</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2016/01/31/mysql-master-slave.html">Mysql中的主从配置</a>
+  </div>
+  <div class="postExt">
+    <h3 id="mysql">Mysql日志相关</h3>
+
+<p>Mysql有四种日志: 查询日志 错误日志 慢查询日志 二进制日志<br />
+相关配置如下:  </p>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2016-01-30T00:00:00+08:00" itemprop="datePublished">Jan 30, 2016</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2016/01/30/mysql-partition.html">Mysql中的分区功能</a>
+  </div>
+  <div class="postExt">
+    <p>分区<br />
+当数据量大的时候仅仅使用索引是不够的，这时候可以使用Mysql的一个功能：分区<br />
+将数据划分为多块在多个位置存放，可以是不同的磁盘也可以是不同的机器<br />
+分区后表面还是一张表但是数据散列在不同的位置<br />
+读写时没有任何区别Mysql自动组织分区数据  </p>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2016-01-30T00:00:00+08:00" itemprop="datePublished">Jan 30, 2016</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2016/01/30/cmd-java-jps.html">Java命令：JPS</a>
+  </div>
+  <div class="postExt">
+    <p>jps(Java Virtual Machine Process Status Tool)是JDK 1.5提供的一个显示当前所有java进程pid的命令，简单实用，非常适合在linux/unix平台上简单察看当前java进程的一些简单情况。</p>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2016-01-29T00:00:00+08:00" itemprop="datePublished">Jan 29, 2016</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2016/01/29/sql-query-optimize.html">Mysql中的查询优化</a>
+  </div>
+  <div class="postExt">
+    <h2 id="explain">explain命令</h2>
+
+<p>用于分析查询语句的执行情况接成本预估<br />
+使用方法:  </p>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2016-01-28T00:00:00+08:00" itemprop="datePublished">Jan 28, 2016</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2016/01/28/mysql-lock.html">Mysql中的表锁和行锁</a>
+  </div>
+  <div class="postExt">
+    <h2 id="section">表级锁</h2>
+
+<p>锁住整张表 其他事物进不来<br />
+myisam innodb都支持表级锁  </p>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2016-01-27T00:00:00+08:00" itemprop="datePublished">Jan 27, 2016</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2016/01/27/scala-problem.html">初学scala常见问题汇总</a>
+  </div>
+  <div class="postExt">
+    <h2 id="scala-objectclass">scala object和class的区别</h2>
+<p>scala中没有static关键字，object 中的东西都是java中的static，object是包含static方法的singleton
+object伴生对象本身就是一个Singleton，不同的是，它有一个与之同名的类（这里的class Companion），二者可以相互访问彼此的私有成员。两者必须定义在同一文件中</p>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2016-01-08T00:00:00+08:00" itemprop="datePublished">Jan 8, 2016</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2016/01/08/common-regex.html">常用正则表达式</a>
+  </div>
+  <div class="postExt">
+    <ul>
+  <li>
+    <p><a href="#num">1. 数字相关</a></p>
+  </li>
+  <li>
+    <p><a href="#money">2. 金额相关</a></p>
+  </li>
+  <li>
+    <p><a href="#word">3. 文字相关</a></p>
+  </li>
+  <li>
+    <p><a href="#other">4. 其他常用</a></p>
+  </li>
+</ul>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2015-11-12T00:00:00+08:00" itemprop="datePublished">Nov 12, 2015</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2015/11/12/linux-shell.html">linux shell编写 常用命令</a>
+  </div>
+  <div class="postExt">
+    <ul>
+  <li><a href="#calcnum">1. 数值计算</a></li>
+  <li><a href="#date">2. 日期</a></li>
+  <li><a href="#string">3. 字符串</a></li>
+</ul>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2015-10-14T00:00:00+08:00" itemprop="datePublished">Oct 14, 2015</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2015/10/14/cmd-of-linux.html">Linux常用命令</a>
+  </div>
+  <div class="postExt">
+    <ul>
+  <li>
+    <p><a href="#system">1. 系统相关</a></p>
+  </li>
+  <li>
+    <p><a href="#tar">2. 压缩相关</a></p>
+  </li>
+  <li>
+    <p><a href="#mysql">3. mysql相关</a></p>
+  </li>
+  <li>
+    <p><a href="#vim">4. vim相关</a></p>
+  </li>
+  <li>
+    <p><a href="#mv">5. 重命名移动文件文件夹命令</a></p>
+  </li>
+  <li>
+    <p><a href="#file">6. 文件文本处理相关</a></p>
+  </li>
+  <li>
+    <p><a href="#crontab">7. crontab定时任务</a></p>
+  </li>
+</ul>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2015-10-02T00:00:00+08:00" itemprop="datePublished">Oct 2, 2015</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2015/10/02/setup-grails-dev-environment.html">mac/linux下搭建grails开发环境</a>
+  </div>
+  <div class="postExt">
+    <p>  最近想进行一个side project决定使用grails开发，以前用windows，最近开始用MAC开发需要重新搭建开发环境，这里稍微介绍一下。  </p>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="post postContent">
+  <div  class="postDate"><time datetime="2015-07-03T00:00:00+08:00" itemprop="datePublished">Jul 3, 2015</time>
+  </div>
+  <div class="postTag">
+    
+  </div>
+  <br>
+  <div class="postTitle">
+  <a class='postLink' href="http://www.54gaozhe.com/notes/2015/07/03/photography-foundation.html">摄影基础名词解释</a>
+  </div>
+  <div class="postExt">
+    <p>  刚刚接触单反，不知道怎么玩，在网上看帖子各种名次弄的云里雾里，索性小时候物理学的不错加上自己摆弄几天相机，大致也理解了那些名词的含意。    </p>
+
+
+  </div>
+</div>
+
+
+
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Gaozhe'blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          
+          <li>
+            <li>Weibo：<a href="http://weibo.com/54gaozhe">敲代码的高双喜</a></li>
+
+          </li>
+          
+          
+          <li>
+            <li>Weixin：<a href="http://mp.weixin.qq.com/s?__biz=MzI5MTUzNzQxNQ==&mid=2247483871&idx=1&sn=51d064eb2cca7486c58546c917477fef&chksm=ec0e56b7db79dfa12ce501f74cfa65b7afa37cd22e1ece4ad217fd0d8b01957a8e028b40e9e6#rd">敲代码的高双喜</a></li>
+
+          </li>
+          
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Gaozhe'blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
